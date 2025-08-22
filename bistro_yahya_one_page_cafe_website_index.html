@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bistro Yahya | Official Website</title>
+  <meta name="description" content="Bistro Yahya — café in Bhatkal serving pastas, pizzas, burgers, sandwiches, rolls, specialty desserts (brownies, donuts, cinnamon buns) and fresh specialty juices." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Bistro Yahya" />
+  <meta property="og:description" content="Comfort café in Bhatkal for pastas, pizzas, burgers, sandwiches, rolls, brownies, donuts, cinnamon buns, and specialty juices." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com" />
+  <meta property="og:image" content="Bistro Yahya (1).png" />
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="Bistro Yahya.png" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0e0f11; --card:#15171a; --text:#f5f6f8; --muted:#a9b0b8;
+      --accent:#e6a94b; --accent-2:#d9473f; --border:#262a2f;
+      --max:1100px; --radius:14px; --shadow:0 6px 30px rgba(0,0,0,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(8px);background:rgba(14,15,17,.65);border-bottom:1px solid var(--border);z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand img{width:40px;height:40px;border-radius:8px;object-fit:cover;border:1px solid var(--border)}
+    .brand .name{font-weight:700;letter-spacing:.2px}
+    .nav a{padding:8px 12px;border-radius:8px}
+    .cta{background:var(--accent);color:#111;font-weight:700;padding:10px 14px;border-radius:10px;display:inline-flex;gap:8px;align-items:center}
+    .cta:hover{filter:brightness(1.05)}
+    .ghost{color:var(--muted)}
+    .hero{padding:72px 0 40px;background:
+      radial-gradient(1200px 400px at 10% -10%,rgba(230,169,75,.12),transparent 60%),
+      radial-gradient(1200px 400px at 90% -20%,rgba(217,71,63,.12),transparent 60%)}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+    .badge{display:inline-flex;gap:8px;align-items:center;background:rgba(230,169,75,.12);border:1px solid rgba(230,169,75,.25);padding:6px 10px;border-radius:999px;color:#f6d8a4;font-weight:600}
+    h1{font-size:clamp(36px,5vw,56px);line-height:1.1;margin:14px 0 10px}
+    .lead{font-size:18px;color:var(--muted);max-width:620px}
+    .hero-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .hero-card img{aspect-ratio:16/10;object-fit:cover}
+    .pillbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .pill{border:1px solid var(--border);padding:8px 12px;border-radius:999px;background:#121417;color:var(--muted)}
+    section{padding:60px 0}
+    .section-title{font-size:28px;margin:0 0 12px}
+    .muted{color:var(--muted)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
+    .price{margin-left:auto;font-weight:700}
+    .menu-item{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed var(--border)}
+    .menu-item:last-child{border-bottom:none}
+    .menu-item h4{margin:0;font-size:16px}
+    .menu-item p{margin:6px 0 0;color:var(--muted);font-size:14px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .gallery img{border-radius:12px;border:1px solid var(--border);aspect-ratio:1/1;object-fit:cover}
+    .highlight{background:linear-gradient(180deg,rgba(230,169,75,.18),transparent 70%);border:1px solid rgba(230,169,75,.35)}
+    .map{border:0;width:100%;height:360px;border-radius:12px}
+    footer{border-top:1px solid var(--border);padding:24px 0;color:var(--muted)}
+    .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .chip{border:1px solid var(--border);padding:6px 10px;border-radius:999px}
+    @media (max-width: 960px){
+      .hero-grid{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      header{position:static}
+    }
+  </style>
+
+  <!-- Schema.org: Restaurant -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Restaurant",
+    "name":"Bistro Yahya",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"Azad Nagar, Jali Rd, opp. to Rural Police Station, Devinagar",
+      "addressLocality":"Bhatkal",
+      "addressRegion":"Karnataka",
+      "postalCode":"581320",
+      "addressCountry":"IN"
+    },
+    "telephone":"+91 9611113310",
+    "servesCuisine":"Italian, Fast Food, Café, Bakery, Desserts, Juices",
+    "url":"https://example.com",
+    "priceRange":"₹₹",
+    "sameAs":[
+      "https://instagram.com/yourhandle",
+      "https://facebook.com/yourpage"
+    ],
+    "acceptsReservations": "True"
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <!-- Replace logo.png with your uploaded logo filename -->
+        <img src="Bistro Yahya.png" alt="Bistro Yahya logo" />
+        <span class="name">Bistro Yahya</span>
+      </a>
+      <nav class="row">
+        <a class="ghost" href="#menu">Menu</a>
+        <a class="ghost" href="#about">About</a>
+        <a class="ghost" href="#gallery">Gallery</a>
+        <a class="ghost" href="#visit">Visit</a>
+        <a class="cta" href="https://wa.me/919611113310?text=Hi%2C%20I%27d%20like%20to%20reserve%20a%20table%20at%20Bistro%20Yahya" target="_blank" rel="noopener">Reserve on WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="badge">☕ New café in town</span>
+          <h1>Pastas, Pizzas, Burgers & Specialty Juices</h1>
+          <p class="lead">Welcome to <strong>Bistro Yahya</strong> — your Bhatkal spot for fresh pastas, stone-style pizzas, juicy burgers, loaded sandwiches & rolls, plus specialty desserts like brownies, donuts, and cinnamon buns.</p>
+          <div class="pillbar">
+            <span class="pill">Dine-in</span>
+            <span class="pill">Takeaway</span>
+            <span class="pill">Delivery</span>
+            <span class="pill">Specialty Juices</span>
+            <span class="pill">Veg & Non‑Veg</span>
+            <span class="pill">Halal</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <img src="hero.jpg" alt="Signature dishes at Bistro Yahya" />
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="container">
+        <h2 class="section-title">Menu Highlights</h2>
+        <p class="muted">Here’s a peek. Ask for the full menu on WhatsApp.</p>
+
+        <div class="cards">
+          <div class="card highlight">
+            <h3>Pastas & Pizzas</h3>
+            <div class="menu-item">
+              <div>
+                <h4>Arrabbiata Pasta</h4>
+                <p>Al dente pasta, spicy tomato-garlic sauce.</p>
+              </div>
+              <div class="price">₹260</div>
+            </div>
+            <div class="menu-item">
+              <div>
+                <h4>Margherita Pizza</h4>
+                <p>Tomato, mozzarella, basil — simple & classic.</p>
+              </div>
+              <div class="price">₹320</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Burgers, Sandwiches & Rolls</h3>
+            <div class="menu-item">
+              <div>
+                <h4>Classic Chicken Burger</h4>
+                <p>House sauce, lettuce, soft bun.</p>
+              </div>
+              <div class="price">₹220</div>
+            </div>
+            <div class="menu-item">
+              <div>
+                <h4>Paneer Tikka Roll</h4>
+                <p>Spiced paneer, onion, mint chutney, wrapped.</p>
+              </div>
+              <div class="price">₹190</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Desserts & Specialty Juices</h3>
+            <div class="menu-item">
+              <div>
+                <h4>Fudge Brownie</h4>
+                <p>Rich chocolate, slightly warm, optional ice‑cream.</p>
+              </div>
+              <div class="price">₹160</div>
+            </div>
+            <div class="menu-item">
+              <div>
+                <h4>Cinnamon Bun</h4>
+                <p>Soft swirl, cream cheese glaze.</p>
+              </div>
+              <div class="price">₹150</div>
+            </div>
+            <div class="menu-item">
+              <div>
+                <h4>Fresh Watermelon Cooler</h4>
+                <p>Crushed fruit, lime hint. No concentrate.</p>
+              </div>
+              <div class="price">₹120</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container grid-2">
+        <div class="card">
+          <h2 class="section-title">Our Story</h2>
+          <p>At <strong>Bistro Yahya</strong>, we keep it simple: bold flavours, fresh bakes, and warm hospitality. From hand‑tossed pizzas and hearty pastas to burgers, sandwiches, and rolls — everything pairs beautifully with our specialty juice bar and dessert counter featuring brownies, donuts, and cinnamon buns.</p>
+          <div class="row" style="margin-top:12px">
+            <span class="chip">👨‍🍳 Freshly made</span>
+            <span class="chip">🧇 Dessert & juice station</span>
+            <span class="chip">🚚 Delivery partners</span>
+          </div>
+        </div>
+        <div class="card">
+          <h2 class="section-title">Hours</h2>
+          <p class="muted">Open daily</p>
+          <ul>
+            <li>3:00 pm – 11:00 pm</li>
+          </ul>
+          <p><strong>Phone:</strong> <a href="tel:+919611113310">+91 96 1111 3310</a></p>
+          <p><strong>WhatsApp:</strong> <a href="https://wa.me/919611113310" target="_blank" rel="noopener">Chat now</a></p>
+          <div class="row">
+            <a class="cta" href="https://www.swiggy.com" target="_blank" rel="noopener">Order on Swiggy</a>
+            <a class="cta" href="https://www.zomato.com" target="_blank" rel="noopener">Order on Zomato</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <h2 class="section-title">Gallery</h2>
+        <p class="muted">Add photos of your space & dishes.</p>
+        <div class="gallery">
+          <img src="gallery1.jpg" alt="Dish 1">
+          <img src="gallery2.jpg" alt="Dish 2">
+          <img src="gallery3.jpg" alt="Dining area">
+          <img src="gallery4.jpg" alt="Kitchen pass">
+        </div>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="container grid-2">
+        <div class="card">
+          <h2 class="section-title">Visit Us</h2>
+          <p>
+            Azad Nagar, Jali Rd, opp. to Rural Police Station, Devinagar<br/>
+            Bhatkal, Karnataka 581320
+          </p>
+          <div class="row">
+            <a class="cta" href="https://maps.google.com/?q=Azad%20Nagar%2C%20Jali%20Rd%2C%20opp.%20to%20Rural%20Police%20Station%2C%20Devinagar%2C%20Bhatkal%2C%20Karnataka%20581320" target="_blank" rel="noopener">Open in Google Maps</a>
+            <a class="cta" href="mailto:hello@bistroyahya.com">Email Us</a>
+          </div>
+        </div>
+        <div class="card">
+          <!-- Google Maps embed using the address above -->
+          <iframe class="map"
+            src="https://www.google.com/maps?q=Azad%20Nagar%2C%20Jali%20Rd%2C%20opp.%20to%20Rural%20Police%20Station%2C%20Devinagar%2C%20Bhatkal%2C%20Karnataka%20581320&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            aria-label="Map to Bistro Yahya">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container row" style="justify-content:space-between">
+      <div>© <span id="year"></span> Bistro Yahya. All rights reserved.</div>
+      <div class="row">
+        <a class="ghost" href="https://instagram.com/yourhandle" target="_blank" rel="noopener">Instagram</a>
+        <a class="ghost" href="https://facebook.com/yourpage" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
