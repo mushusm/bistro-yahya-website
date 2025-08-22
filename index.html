@@ -3,75 +3,90 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bistro Yahya | Official Website</title>
-  <meta name="description" content="Bistro Yahya — café in Bhatkal serving pastas, pizzas, burgers, sandwiches, rolls, specialty desserts (brownies, donuts, cinnamon buns) and fresh specialty juices." />
+  <title>Bistro Yahya | Floral Cabin Café in Bhatkal</title>
+  <meta name="description" content="Bhatkal’s pink floral cabin café. Pastas, pizzas, burgers, sandwiches, rolls, specialty desserts (brownies, donuts, cinnamon buns) and fresh specialty juices. Reserve your private cabin." />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Bistro Yahya" />
-  <meta property="og:description" content="Comfort café in Bhatkal for pastas, pizzas, burgers, sandwiches, rolls, brownies, donuts, cinnamon buns, and specialty juices." />
+  <meta property="og:title" content="Bistro Yahya — Floral Cabin Café" />
+  <meta property="og:description" content="7 pink floral cabins, specialty desserts & juices. Reserve your private cabin." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://example.com" />
   <meta property="og:image" content="Bistro Yahya (1).png" />
 
-  <!-- Favicon (optional) -->
   <link rel="icon" href="Bistro Yahya.png" />
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#0e0f11; --card:#15171a; --text:#f5f6f8; --muted:#a9b0b8;
-      --accent:#e6a94b; --accent-2:#d9473f; --border:#262a2f;
-      --max:1100px; --radius:14px; --shadow:0 6px 30px rgba(0,0,0,.25);
+      --bg:#fff7f8;          /* soft pink background */
+      --card:#ffffff;        /* white cards */
+      --text:#2a2a2a;        /* dark text */
+      --muted:#6b6b6b;       /* muted text */
+      --accent:#ff7aa2;      /* pink accent */
+      --accent-2:#f3c6cf;    /* light pink */
+      --leaf:#7bb089;        /* soft green leaf accent */
+      --border:#f0dbe0;      /* light border */
+      --max:1120px; --radius:18px; --shadow:0 10px 30px rgba(255,122,162,.18);
     }
     *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.65}
+    h1,h2,h3{font-family:"Playfair Display",serif; margin:0 0 8px}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
     .container{max-width:var(--max);margin:0 auto;padding:0 20px}
-    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(8px);background:rgba(14,15,17,.65);border-bottom:1px solid var(--border);z-index:50}
+    header{position:sticky;top:0;background:rgba(255,247,248,.75);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--border);z-index:50}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
     .brand{display:flex;gap:12px;align-items:center}
-    .brand img{width:40px;height:40px;border-radius:8px;object-fit:cover;border:1px solid var(--border)}
+    .brand img{width:44px;height:44px;border-radius:12px;object-fit:cover;border:1px solid var(--border)}
     .brand .name{font-weight:700;letter-spacing:.2px}
-    .nav a{padding:8px 12px;border-radius:8px}
-    .cta{background:var(--accent);color:#111;font-weight:700;padding:10px 14px;border-radius:10px;display:inline-flex;gap:8px;align-items:center}
+    .nav a{padding:10px 12px;border-radius:999px}
+    .cta{background:var(--accent);color:#fff;font-weight:700;padding:10px 16px;border-radius:999px;display:inline-flex;gap:8px;align-items:center;box-shadow:var(--shadow)}
     .cta:hover{filter:brightness(1.05)}
     .ghost{color:var(--muted)}
-    .hero{padding:72px 0 40px;background:
-      radial-gradient(1200px 400px at 10% -10%,rgba(230,169,75,.12),transparent 60%),
-      radial-gradient(1200px 400px at 90% -20%,rgba(217,71,63,.12),transparent 60%)}
-    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
-    .badge{display:inline-flex;gap:8px;align-items:center;background:rgba(230,169,75,.12);border:1px solid rgba(230,169,75,.25);padding:6px 10px;border-radius:999px;color:#f6d8a4;font-weight:600}
-    h1{font-size:clamp(36px,5vw,56px);line-height:1.1;margin:14px 0 10px}
-    .lead{font-size:18px;color:var(--muted);max-width:620px}
-    .hero-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+
+    /* Hero */
+    .hero{padding:80px 0 40px; background:
+      radial-gradient(900px 380px at 10% -10%, var(--accent-2), transparent 60%),
+      radial-gradient(900px 380px at 90% -10%, #ffe7ed, transparent 60%)}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center}
+    .badge{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--border);padding:6px 12px;border-radius:999px;color:#d34e7b;font-weight:700}
+    h1{font-size:clamp(36px,5vw,58px);line-height:1.12;margin:14px 0 12px}
+    .lead{font-size:18px;color:var(--muted);max-width:680px}
+    .hero-card{background:var(--card);border:1px solid var(--border);border-radius:28px;box-shadow:var(--shadow);overflow:hidden}
     .hero-card img{aspect-ratio:16/10;object-fit:cover}
-    .pillbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-    .pill{border:1px solid var(--border);padding:8px 12px;border-radius:999px;background:#121417;color:var(--muted)}
-    section{padding:60px 0}
-    .section-title{font-size:28px;margin:0 0 12px}
+    .pillbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .pill{border:1px solid var(--border);padding:8px 12px;border-radius:999px;background:#fff;color:var(--muted)}
+
+    /* Sections */
+    section{padding:64px 0}
+    .section-title{font-size:30px;margin:0 0 8px}
     .muted{color:var(--muted)}
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+    .highlight{background:linear-gradient(180deg, #fff, #fff0f4 85%); border-color:#ffd5e5}
     .price{margin-left:auto;font-weight:700}
     .menu-item{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed var(--border)}
     .menu-item:last-child{border-bottom:none}
     .menu-item h4{margin:0;font-size:16px}
     .menu-item p{margin:6px 0 0;color:var(--muted);font-size:14px}
+
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+
+    .ribbon{display:inline-block;background:var(--leaf);color:#fff;padding:6px 12px;border-radius:999px;font-weight:600}
+    .map{border:0;width:100%;height:360px;border-radius:16px}
     .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-    .gallery img{border-radius:12px;border:1px solid var(--border);aspect-ratio:1/1;object-fit:cover}
-    .highlight{background:linear-gradient(180deg,rgba(230,169,75,.18),transparent 70%);border:1px solid rgba(230,169,75,.35)}
-    .map{border:0;width:100%;height:360px;border-radius:12px}
-    footer{border-top:1px solid var(--border);padding:24px 0;color:var(--muted)}
+    .gallery img{border-radius:14px;border:1px solid var(--border);aspect-ratio:1/1;object-fit:cover}
+
+    footer{border-top:1px solid var(--border);padding:26px 0;color:var(--muted)}
     .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-    .chip{border:1px solid var(--border);padding:6px 10px;border-radius:999px}
-    @media (max-width: 960px){
+    .chip{border:1px solid var(--border);padding:6px 10px;border-radius:999px;background:#fff}
+
+    @media (max-width: 980px){
       .hero-grid{grid-template-columns:1fr}
       .cards{grid-template-columns:1fr}
       .grid-2{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
       .gallery{grid-template-columns:repeat(2,1fr)}
       header{position:static}
     }
@@ -92,13 +107,8 @@
       "addressCountry":"IN"
     },
     "telephone":"+91 9611113310",
-    "servesCuisine":"Italian, Fast Food, Café, Bakery, Desserts, Juices",
-    "url":"https://example.com",
+    "servesCuisine":"Italian, Café, Fast Food, Bakery, Desserts, Juices",
     "priceRange":"₹₹",
-    "sameAs":[
-      "https://instagram.com/yourhandle",
-      "https://facebook.com/yourpage"
-    ],
     "acceptsReservations": "True"
   }
   </script>
@@ -107,132 +117,127 @@
   <header>
     <div class="container nav">
       <a class="brand" href="#top">
-        <!-- Replace logo.png with your uploaded logo filename -->
         <img src="Bistro Yahya.png" alt="Bistro Yahya logo" />
         <span class="name">Bistro Yahya</span>
       </a>
       <nav class="row">
+        <a class="ghost" href="#cabins">Cabins</a>
         <a class="ghost" href="#menu">Menu</a>
-        <a class="ghost" href="#about">About</a>
-        <a class="ghost" href="#gallery">Gallery</a>
+        <a class="ghost" href="#about">Chef & Story</a>
         <a class="ghost" href="#visit">Visit</a>
-        <a class="cta" href="https://wa.me/919611113310?text=Hi%2C%20I%27d%20like%20to%20reserve%20a%20table%20at%20Bistro%20Yahya" target="_blank" rel="noopener">Reserve on WhatsApp</a>
+        <a class="cta" href="https://wa.me/919611113310?text=Hi%2C%20I%27d%20like%20to%20reserve%20a%20cabin%20at%20Bistro%20Yahya" target="_blank" rel="noopener">Reserve a Cabin</a>
       </nav>
     </div>
   </header>
 
   <main id="top">
+    <!-- Hero -->
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="badge">☕ New café in town</span>
-          <h1>Pastas, Pizzas, Burgers & Specialty Juices</h1>
-          <p class="lead">Welcome to <strong>Bistro Yahya</strong> — your Bhatkal spot for fresh pastas, stone-style pizzas, juicy burgers, loaded sandwiches & rolls, plus specialty desserts like brownies, donuts, and cinnamon buns.</p>
+          <span class="badge">🌸 Floral Cabin Café • Bhatkal</span>
+          <h1>Pastas, Pizzas & Specialty Desserts — in Pink Floral Cabins</h1>
+          <p class="lead">Welcome to <strong>Bistro Yahya</strong> — cozy arched cabins, flowers everywhere, and a menu of pastas, pizzas, burgers, sandwiches, rolls, brownies, donuts, cinnamon buns and fresh specialty juices. Reserve your private cabin today.</p>
           <div class="pillbar">
-            <span class="pill">Dine-in</span>
-            <span class="pill">Takeaway</span>
-            <span class="pill">Delivery</span>
+            <span class="pill">7 Private Cabins</span>
             <span class="pill">Specialty Juices</span>
             <span class="pill">Veg & Non‑Veg</span>
-            <span class="pill">Halal</span>
+            <span class="pill">Dine‑in • Takeaway • Delivery</span>
           </div>
         </div>
         <div class="hero-card">
-          <img src="hero.jpg" alt="Signature dishes at Bistro Yahya" />
+          <img src="hero.jpg" alt="Bistro Yahya interiors and signature dishes" />
         </div>
       </div>
     </section>
 
+    <!-- Cabins -->
+    <section id="cabins">
+      <div class="container grid-3">
+        <div class="card">
+          <h2 class="section-title">Floral Pink Cabins</h2>
+          <p class="muted">5 cabins on the ground floor and 2 upstairs — arched, floral, and cozy. Perfect for couples, families, and small groups.</p>
+          <div class="row" style="margin-top:8px">
+            <span class="chip">Privacy</span>
+            <span class="chip">Instagram‑worthy</span>
+            <span class="chip">Comfort seating</span>
+          </div>
+        </div>
+        <div class="card">
+          <h2 class="section-title">Dumbwaiter Kitchen</h2>
+          <p class="muted">Our kitchen is on the first floor. A neat dumbwaiter lift brings food fresh and fast to the ground floor cabins.</p>
+          <div class="row" style="margin-top:8px">
+            <span class="chip">Fresh & Quick</span>
+            <span class="chip">Upstairs Kitchen</span>
+            <span class="chip">Fun to watch</span>
+          </div>
+        </div>
+        <div class="card">
+          <h2 class="section-title">Cabin Specials</h2>
+          <p class="muted">Bundle meals for 2 or 4. Example: Pizza + Pasta + 2 Juices + Brownie. Ask for today’s specials or reserve via WhatsApp.</p>
+          <a class="cta" href="https://wa.me/919611113310?text=Hi%2C%20can%20I%20book%20a%20cabin%20and%20know%20today%E2%80%99s%20specials%3F" target="_blank" rel="noopener">Book Now on WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu (JSON-powered) -->
     <section id="menu">
       <div class="container">
-        <h2 class="section-title">Menu Highlights</h2>
-        <p class="muted">Here’s a peek. Ask for the full menu on WhatsApp.</p>
-
-        <div class="cards">
-          <div class="card highlight">
-            <h3>Pastas & Pizzas</h3>
-            <div class="menu-item">
-              <div>
-                <h4>Arrabbiata Pasta</h4>
-                <p>Al dente pasta, spicy tomato-garlic sauce.</p>
-              </div>
-              <div class="price">₹260</div>
-            </div>
-            <div class="menu-item">
-              <div>
-                <h4>Margherita Pizza</h4>
-                <p>Tomato, mozzarella, basil — simple & classic.</p>
-              </div>
-              <div class="price">₹320</div>
-            </div>
+        <div class="row" style="justify-content:space-between;align-items:end;margin-bottom:10px">
+          <div>
+            <h2 class="section-title">Menu Highlights</h2>
+            <p class="muted">Fresh bakes & hearty plates. Update anytime via <code>data/menu.json</code>.</p>
           </div>
-
-          <div class="card">
-            <h3>Burgers, Sandwiches & Rolls</h3>
-            <div class="menu-item">
-              <div>
-                <h4>Classic Chicken Burger</h4>
-                <p>House sauce, lettuce, soft bun.</p>
-              </div>
-              <div class="price">₹220</div>
-            </div>
-            <div class="menu-item">
-              <div>
-                <h4>Paneer Tikka Roll</h4>
-                <p>Spiced paneer, onion, mint chutney, wrapped.</p>
-              </div>
-              <div class="price">₹190</div>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>Desserts & Specialty Juices</h3>
-            <div class="menu-item">
-              <div>
-                <h4>Fudge Brownie</h4>
-                <p>Rich chocolate, slightly warm, optional ice‑cream.</p>
-              </div>
-              <div class="price">₹160</div>
-            </div>
-            <div class="menu-item">
-              <div>
-                <h4>Cinnamon Bun</h4>
-                <p>Soft swirl, cream cheese glaze.</p>
-              </div>
-              <div class="price">₹150</div>
-            </div>
-            <div class="menu-item">
-              <div>
-                <h4>Fresh Watermelon Cooler</h4>
-                <p>Crushed fruit, lime hint. No concentrate.</p>
-              </div>
-              <div class="price">₹120</div>
-            </div>
-          </div>
+          <span class="ribbon">Delivery on Swiggy · Zomato</span>
         </div>
+        <div class="cards" id="menu-root">
+          <!-- JSON will render here. Fallback template below. -->
+        </div>
+        
+        <template id="menu-fallback">
+          {
+            "sections": [
+              {"title":"Pastas & Pizzas","items":[
+                {"name":"Arrabbiata Pasta","desc":"Spicy tomato-garlic sauce","price":260},
+                {"name":"Margherita Pizza","desc":"Tomato, mozzarella, basil","price":320}
+              ]},
+              {"title":"Burgers & Rolls","items":[
+                {"name":"Classic Chicken Burger","desc":"House sauce, lettuce, soft bun","price":220},
+                {"name":"Paneer Tikka Roll","desc":"Spiced paneer, mint chutney","price":190}
+              ]},
+              {"title":"Desserts & Juices","items":[
+                {"name":"Fudge Brownie","desc":"Warm, optional ice‑cream","price":160},
+                {"name":"Cinnamon Bun","desc":"Cream cheese glaze","price":150},
+                {"name":"Watermelon Cooler","desc":"Crushed fruit, hint of lime","price":120}
+              ]}
+            ]
+          }
+        </template>
       </div>
     </section>
 
+    <!-- Chef & Story -->
     <section id="about">
       <div class="container grid-2">
         <div class="card">
-          <h2 class="section-title">Our Story</h2>
-          <p>At <strong>Bistro Yahya</strong>, we keep it simple: bold flavours, fresh bakes, and warm hospitality. From hand‑tossed pizzas and hearty pastas to burgers, sandwiches, and rolls — everything pairs beautifully with our specialty juice bar and dessert counter featuring brownies, donuts, and cinnamon buns.</p>
+          <h2 class="section-title">Chef & Story</h2>
+          <p>At <strong>Bistro Yahya</strong>, we bring together comfort cooking and a floral, Instagram‑friendly vibe. Expect hand‑tossed pizzas, hearty pastas, burgers, sandwiches and rolls — finished with specialty juices and a dessert counter starring brownies, donuts and cinnamon buns.</p>
           <div class="row" style="margin-top:12px">
             <span class="chip">👨‍🍳 Freshly made</span>
-            <span class="chip">🧇 Dessert & juice station</span>
-            <span class="chip">🚚 Delivery partners</span>
+            <span class="chip">🌸 Floral interiors</span>
+            <span class="chip">🧃 Juice station</span>
           </div>
         </div>
         <div class="card">
-          <h2 class="section-title">Hours</h2>
-          <p class="muted">Open daily</p>
+          <h2 class="section-title">Reservations & Hours</h2>
+          <p class="muted">Cabins are limited — message us to reserve.</p>
           <ul>
-            <li>3:00 pm – 11:00 pm</li>
+            <li><strong>Hours:</strong> 3:00 pm – 11:00 pm (daily)</li>
+            <li><strong>Phone:</strong> <a href="tel:+919611113310">+91 96 1111 3310</a></li>
+            <li><strong>WhatsApp:</strong> <a href="https://wa.me/919611113310" target="_blank" rel="noopener">Chat now</a></li>
           </ul>
-          <p><strong>Phone:</strong> <a href="tel:+919611113310">+91 96 1111 3310</a></p>
-          <p><strong>WhatsApp:</strong> <a href="https://wa.me/919611113310" target="_blank" rel="noopener">Chat now</a></p>
           <div class="row">
+            <a class="cta" href="https://wa.me/919611113310?text=Hi%2C%20I%27d%20like%20to%20reserve%20a%20cabin%20at%20Bistro%20Yahya" target="_blank" rel="noopener">Reserve a Cabin</a>
             <a class="cta" href="https://www.swiggy.com" target="_blank" rel="noopener">Order on Swiggy</a>
             <a class="cta" href="https://www.zomato.com" target="_blank" rel="noopener">Order on Zomato</a>
           </div>
@@ -240,19 +245,21 @@
       </div>
     </section>
 
+    <!-- Gallery -->
     <section id="gallery">
       <div class="container">
         <h2 class="section-title">Gallery</h2>
-        <p class="muted">Add photos of your space & dishes.</p>
+        <p class="muted">Add photos of your cabins, arches, desserts and juices.</p>
         <div class="gallery">
-          <img src="gallery1.jpg" alt="Dish 1">
-          <img src="gallery2.jpg" alt="Dish 2">
-          <img src="gallery3.jpg" alt="Dining area">
-          <img src="gallery4.jpg" alt="Kitchen pass">
+          <img src="gallery1.jpg" alt="Cabin interior">
+          <img src="gallery2.jpg" alt="Arched design">
+          <img src="gallery3.jpg" alt="Signature desserts">
+          <img src="gallery4.jpg" alt="Specialty juices">
         </div>
       </div>
     </section>
 
+    <!-- Visit -->
     <section id="visit">
       <div class="container grid-2">
         <div class="card">
@@ -267,7 +274,6 @@
           </div>
         </div>
         <div class="card">
-          <!-- Google Maps embed using the address above -->
           <iframe class="map"
             src="https://www.google.com/maps?q=Azad%20Nagar%2C%20Jali%20Rd%2C%20opp.%20to%20Rural%20Police%20Station%2C%20Devinagar%2C%20Bhatkal%2C%20Karnataka%20581320&output=embed"
             loading="lazy" referrerpolicy="no-referrer-when-downgrade"
@@ -290,6 +296,50 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menu loader: reads data/menu.json; if missing, uses fallback template.
+    async function loadMenu(){
+      const root = document.getElementById('menu-root') || document.getElementById('menu').querySelector('.cards');
+      try {
+        const res = await fetch('data/menu.json', {cache:'no-store'});
+        if(!res.ok) throw new Error('HTTP '+res.status);
+        const data = await res.json();
+        renderMenu(root, data);
+      } catch (e){
+        try {
+          const t = document.getElementById('menu-fallback');
+          const data = JSON.parse(t.innerHTML.trim());
+          renderMenu(root, data);
+        } catch(err){
+          root.innerHTML = '<div class="card"><h3>Menu coming soon</h3><p class="muted">We\'re setting up our menu. Please check back shortly.</p></div>';
+        }
+      }
+    }
+
+    function renderMenu(root, data){
+      root.innerHTML = '';
+      (data.sections||[]).forEach((section, idx) => {
+        const card = document.createElement('div');
+        card.className = 'card' + (idx === 0 ? ' highlight' : '');
+        const h3 = document.createElement('h3');
+        h3.textContent = section.title;
+        card.appendChild(h3);
+        (section.items||[]).forEach(item => {
+          const row = document.createElement('div');
+          row.className = 'menu-item';
+          row.innerHTML = `
+            <div>
+              <h4>${item.name||''}</h4>
+              <p>${item.desc||''}</p>
+            </div>
+            <div class="price">₹${item.price||''}</div>`;
+          card.appendChild(row);
+        });
+        root.appendChild(card);
+      });
+    }
+
+    loadMenu();
   </script>
 </body>
 </html>
