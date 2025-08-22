@@ -90,7 +90,11 @@
       .gallery{grid-template-columns:repeat(2,1fr)}
       header{position:static}
     }
-  </style>
+  .announce{background:linear-gradient(90deg,#ffe3ec,#fff);border-bottom:1px solid var(--border);}
+.announce .bar{max-width:var(--max);margin:0 auto;padding:10px 20px;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap}
+.announce .bar .tag{background:var(--accent);color:#fff;padding:6px 10px;border-radius:999px;font-weight:700}
+.announce .bar a{font-weight:700;text-decoration:underline}
+</style>
 
   <!-- Schema.org: Restaurant -->
   <script type="application/ld+json">
@@ -114,6 +118,15 @@
   </script>
 </head>
 <body>
+  <!-- Opening Soon Announcement Bar -->
+  <div class="announce">
+    <div class="bar">
+      <span class="tag">Opening Soon</span>
+      <span>Reserve your private cabin now on WhatsApp.</span>
+      <a href="https://wa.me/919611113310?text=Hi%2C%20I%27d%20like%20to%20reserve%20a%20cabin%20for%20opening%20week%20at%20Bistro%20Yahya" target="_blank" rel="noopener">Book via WhatsApp</a>
+    </div>
+  </div>
+
   <header>
     <div class="container nav">
       <a class="brand" href="#top">
@@ -137,6 +150,7 @@
         <div>
           <span class="badge">🌸 Floral Cabin Café • Bhatkal</span>
           <h1>Pastas, Pizzas & Specialty Desserts — in Pink Floral Cabins</h1>
+          <p class="ribbon" style="display:inline-block;margin:4px 0 0">💗 Opening Soon — WhatsApp to Reserve</p>
           <p class="lead">Welcome to <strong>Bistro Yahya</strong> — cozy arched cabins, flowers everywhere, and a menu of pastas, pizzas, burgers, sandwiches, rolls, brownies, donuts, cinnamon buns and fresh specialty juices. Reserve your private cabin today.</p>
           <div class="pillbar">
             <span class="pill">7 Private Cabins</span>
@@ -230,7 +244,7 @@
         </div>
         <div class="card">
           <h2 class="section-title">Reservations & Hours</h2>
-          <p class="muted">Cabins are limited — message us to reserve.</p>
+          <p class="muted">Cabins are limited — message us to reserve for opening week.</p>
           <ul>
             <li><strong>Hours:</strong> 3:00 pm – 11:00 pm (daily)</li>
             <li><strong>Phone:</strong> <a href="tel:+919611113310">+91 96 1111 3310</a></li>
