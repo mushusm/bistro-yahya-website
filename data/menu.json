@@ -3,23 +3,23 @@
     {
       "title": "Pastas & Pizzas",
       "items": [
-        { "name": "Arrabbiata Pasta", "desc": "Spicy tomato-garlic sauce", "price": 260 },
-        { "name": "Margherita Pizza", "desc": "Tomato, mozzarella, basil", "price": 320 }
+        { "name": "Arrabbiata Pasta", "desc": "Spicy tomato-garlic sauce", "price": Coming Soon },
+        { "name": "Margherita Pizza", "desc": "Tomato, mozzarella, basil", "price": Coming Soon }
       ]
     },
     {
       "title": "Burgers & Rolls",
       "items": [
-        { "name": "Classic Chicken Burger", "desc": "House sauce, lettuce, soft bun", "price": 220 },
-        { "name": "Paneer Tikka Roll", "desc": "Spiced paneer, onion, mint chutney", "price": 190 }
+        { "name": "Classic Chicken Burger", "desc": "House sauce, lettuce, soft bun", "price": Coming Soon },
+        { "name": "Paneer Tikka Roll", "desc": "Spiced paneer, onion, mint chutney", "price": Coming Soon }
       ]
     },
     {
       "title": "Desserts & Juices",
       "items": [
-        { "name": "Fudge Brownie", "desc": "Rich chocolate, optional ice-cream", "price": 160 },
-        { "name": "Cinnamon Bun", "desc": "Soft swirl, cream cheese glaze", "price": 150 },
-        { "name": "Fresh Watermelon Cooler", "desc": "Crushed fruit, lime hint", "price": 120 }
+        { "name": "Fudge Brownie", "desc": "Rich chocolate, optional ice-cream", "price": Coming Soon },
+        { "name": "Cinnamon Bun", "desc": "Soft swirl, cream cheese glaze", "price": Coming Soon },
+        { "name": "Fresh Watermelon Cooler", "desc": "Crushed fruit, lime hint", "price": Coming Soon }
       ]
     }
   ]
