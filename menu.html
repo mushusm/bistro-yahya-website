@@ -5,14 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Menu | Bistro Yahya</title>
   <meta name="description" content="View the full Bistro Yahya menu. Pastas, pizzas, burgers, sandwiches, rolls, specialty desserts and fresh juices. Order via WhatsApp or scan QR in-café." />
-  <link rel="icon" href="bistro-yahya.png" />
+  <link rel="icon" href="Bistro Yahya.png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#fff7f8; --card:#ffffff; --text:#2a2a2a; --muted:#6b6b6b;
-      --accent:#ff7aa2; --accent-2:#f3c6cf; --leaf:#7bb089; --border:#f0dbe0;
-      --max:1120px; --radius:18px; --shadow:0 10px 30px rgba(255,122,162,.18);
-    }
+    :root{ --bg:#fff7f8; --card:#ffffff; --text:#2a2a2a; --muted:#6b6b6b; --accent:#ff7aa2; --accent-2:#f3c6cf; --leaf:#7bb089; --border:#f0dbe0; --max:1120px; --radius:18px; --shadow:0 10px 30px rgba(255,122,162,.18); }
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--bg);color:var(--text);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.65}
     h1,h2,h3{font-family:"Playfair Display",serif;margin:0 0 8px}
@@ -23,6 +19,7 @@
     .brand{display:flex;gap:12px;align-items:center}
     .brand img{width:40px;height:40px;border-radius:10px;border:1px solid var(--border)}
     .cta{background:var(--accent);color:#fff;font-weight:700;padding:10px 14px;border-radius:999px;box-shadow:var(--shadow)}
+    .cta.disabled{opacity:.55;pointer-events:none;filter:grayscale(20%)}
     main{padding:28px 0}
     .controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:8px 0 18px}
     .input{background:#fff;border:1px solid var(--border);border-radius:999px;padding:10px 14px;min-width:240px}
@@ -53,7 +50,7 @@
 <body>
   <header>
     <div class="container nav">
-      <a class="brand" href="./"><img src="bistro-yahya.png" alt="Bistro Yahya"/><strong>Bistro Yahya</strong></a>
+      <a class="brand" href="./"><img src="Bistro Yahya.png" alt="Bistro Yahya"/><strong style="margin-left:6px">Bistro Yahya</strong></a>
       <div style="display:flex;gap:10px;align-items:center">
         <a class="ribbon" href="./">← Home</a>
         <a class="cta" href="https://wa.me/919611113310?text=Hi%2C%20I%27d%20like%20to%20reserve%20a%20cabin%20at%20Bistro%20Yahya" target="_blank" rel="noopener">Reserve a Cabin</a>
@@ -64,7 +61,7 @@
   <main>
     <div class="container">
       <h1>Menu</h1>
-      <p class="muted">Browse our full menu. Add items and send your order via WhatsApp, or scan this page as a QR in‑café.</p>
+      <p class="muted">Browse our full menu. Add items and send your order via WhatsApp, or scan this page as a QR in-café.</p>
 
       <div class="controls">
         <input id="search" class="input" placeholder="Search (pizza, brownie, juice...)" />
@@ -83,10 +80,21 @@
         <aside class="card sticky">
           <div class="summary">
             <h3>Your Order</h3>
+
+            <div class="sec">
+              <label class="muted" for="custName">Your Name</label>
+              <input id="custName" class="input" placeholder="Your name" />
+            </div>
+
+            <div class="sec">
+              <label class="muted" for="custPhone">Phone</label>
+              <input id="custPhone" class="input" placeholder="+91 9XXXXXXXXX" inputmode="tel" />
+            </div>
+
             <div id="order-lines" class="sec"></div>
             <div class="line"><span class="muted">Subtotal</span><span id="subtotal">₹0</span></div>
             <div class="line total"><span>Total</span><span id="total">₹0</span></div>
-            <a id="waCheckout" class="cta" target="_blank" rel="noopener">Checkout on WhatsApp</a>
+            <a id="waCheckout" class="cta disabled" target="_blank" rel="noopener">Checkout on WhatsApp</a>
             <div class="note">Payment at café on delivery to cabin / counter. Prices inclusive of taxes (where applicable).</div>
           </div>
         </aside>
@@ -107,20 +115,24 @@
     const waCheckout = document.getElementById('waCheckout');
     const searchInput = document.getElementById('search');
     const chips = Array.from(document.querySelectorAll('.chip'));
+    const custName = document.getElementById('custName');
+    const custPhone = document.getElementById('custPhone');
     document.getElementById('year').textContent = new Date().getFullYear();
 
     let data = { sections: [] };
     let cart = JSON.parse(localStorage.getItem('by_cart')||'{}');
     let activeFilter = 'all';
 
-    function saveCart(){ localStorage.setItem('by_cart', JSON.stringify(cart)); }
+    // single QR for all; no per-cabin parameter
+    const urlCabin = '';
 
-    function currency(n){ return '₹' + (Number.isFinite(n)? n : 0); }
+    function saveCart(){ localStorage.setItem('by_cart', JSON.stringify(cart)); }
+    function currency(n){ const num = Number(n); return '₹' + (Number.isFinite(num)? num : 0); }
 
     function sectionMatches(title){
       if(activeFilter==='all') return true;
       const key = activeFilter.toLowerCase();
-      return title.toLowerCase().includes(key);
+      return (title||'').toLowerCase().includes(key);
     }
 
     function itemMatches(item){
@@ -157,54 +169,82 @@
               <span>${qty}</span>
               <button class="btn" data-act="inc">+</button>
             </div>`;
-          line.querySelector('[data-act="dec"]').onclick = ()=>{ if(qty>0){ cart[key].qty--; if(cart[key].qty<=0) delete cart[key]; saveCart(); render(); renderSummary(); } };
-          line.querySelector('[data-act="inc"]').onclick = ()=>{ cart[key] = cart[key]||{name:item.name, price:item.price??0}; cart[key].qty = (cart[key].qty||0)+1; saveCart(); render(); renderSummary(); };
+          line.querySelector('[data-act="dec"]').onclick = ()=>{
+            if(qty>0){
+              cart[key].qty--;
+              if(cart[key].qty<=0) delete cart[key];
+              saveCart(); render(); renderSummary();
+            }
+          };
+          line.querySelector('[data-act="inc"]').onclick = ()=>{
+            const priceNum = Number(item.price) || 0;
+            cart[key] = cart[key]||{name:item.name, price:priceNum};
+            cart[key].qty = (cart[key].qty||0)+1;
+            saveCart(); render(); renderSummary();
+          };
           card.appendChild(line);
         });
         root.appendChild(card);
       });
     }
 
-    function renderSummary(){
-      orderLines.innerHTML = '';
-      let subtotal = 0;
-      Object.entries(cart).forEach(([key, val])=>{
-        const row = document.createElement('div');
-        row.className = 'line';
-        row.innerHTML = `<span>${val.name} × ${val.qty}</span><span>${currency(val.price*val.qty)}</span>`;
-        orderLines.appendChild(row);
-        subtotal += (val.price||0)*(val.qty||0);
-      });
-      subtotalEl.textContent = currency(subtotal);
-      totalEl.textContent = currency(subtotal);
+    function makeWaText(){
+      const name = (custName.value||'').trim();
+      const phone = (custPhone.value||'').trim();
+      const lines = ['Bistro Yahya — New Order'];
+      Object.entries(cart).forEach(([, v]) => { lines.push(`• ${v.name} × ${v.qty}`); });
+      const total = Object.entries(cart).reduce((s, [, v]) => s + (Number(v.price)||0) * (v.qty||0), 0);
+      lines.push(`Total: ₹${total}`);
+      lines.push('Cabin/Table (optional): ____');
+      lines.push(`Name: ${name || '____'}  Phone: ${phone || '_____'}`);
+      return lines.join('\n'); // real newlines; encode once later
+    }
+
+    function updateWaLink(){
       const text = encodeURIComponent(makeWaText());
       waCheckout.href = `https://wa.me/${PHONE}?text=${text}`;
       waCheckout.target = '_blank';
+      const ready =
+        Object.keys(cart).length>0 &&
+        (custName.value||'').trim().length>0 &&
+        (custPhone.value||'').trim().replace(/\D/g,'').length>=10;
+      if(ready){ waCheckout.classList.remove('disabled'); } else { waCheckout.classList.add('disabled'); }
     }
 
-    function makeWaText(){
-      const lines = ['Bistro Yahya — New Order'];
-      Object.entries(cart).forEach(([k,v])=>{ lines.push(`• ${v.name} × ${v.qty}`); });
-      const total = Object.entries(cart).reduce((s,[,v])=> s + (v.price||0)*(v.qty||0), 0);
-      lines.push(`Total: ${currency(total)}`);
-      lines.push('Cabin (optional): ____');
-      lines.push('Name: ____  Phone: ____');
-      return lines.join('%0A');
+    function renderSummary(){
+      orderLines.innerHTML = '';
+      let subtotal = 0;
+      Object.values(cart).forEach(v => {
+        const row = document.createElement('div');
+        row.className = 'line';
+        const lineTotal = (Number(v.price)||0) * (v.qty||0);
+        row.innerHTML = `<span>${v.name} × ${v.qty}</span><span>${currency(lineTotal)}</span>`;
+        orderLines.appendChild(row);
+        subtotal += lineTotal;
+      });
+      subtotalEl.textContent = currency(subtotal);
+      totalEl.textContent = currency(subtotal);
+      updateWaLink();
     }
 
     async function load(){
       try{
         const res = await fetch('data/menu.json', {cache:'no-store'});
         data = await res.json();
-      }catch(e){
-        data = { sections: [] };
-      }
+      }catch(e){ data = { sections: [] }; }
+      // preload saved name/phone
+      custName.value = localStorage.getItem('by_name') || '';
+      custPhone.value = localStorage.getItem('by_phone') || '';
       render();
       renderSummary();
+      updateWaLink();
     }
 
+    // listeners
     chips.forEach(c=> c.onclick = ()=>{ chips.forEach(x=>x.classList.remove('active')); c.classList.add('active'); activeFilter = c.dataset.filter; render(); });
     searchInput.oninput = ()=> render();
+    custName.oninput = ()=>{ localStorage.setItem('by_name', custName.value); updateWaLink(); };
+    custPhone.oninput = ()=>{ localStorage.setItem('by_phone', custPhone.value); updateWaLink(); };
 
     load();
   </script>
