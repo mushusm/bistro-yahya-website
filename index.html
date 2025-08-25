@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bistro Yahya | Where Every Bite Tells a Story</title>
-  <meta name="description" content="Bhatkal’s floral cabin café by Chef Yahya. Handcrafted bakes, bold flavors, and cozy pink cabins. Order online or visit us on Jali Road." />
+  <title>Bistro Yahya | Floral Cabin Café in Bhatkal</title>
+  <meta name="description" content="Bhatkal’s pink floral cabin café. Pastas, pizzas, burgers, sandwiches, rolls, specialty desserts (brownies, donuts, cinnamon buns) and fresh specialty juices. Reserve your private cabin." />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Bistro Yahya — Floral Cabin Café" />
@@ -13,28 +13,36 @@
   <meta property="og:url" content="https://bistroyahya.com" />
   <meta property="og:image" content="Bistro Yahya (1).png" />
 
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bistro Yahya — Floral Cabin Café" />
+  <meta name="twitter:description" content="Pastas, pizzas, burgers, sandwiches, rolls, brownies, donuts & fresh specialty juices in cozy pink floral cabins." />
+  <meta name="twitter:image" content="Bistro Yahya (1).png" />
+
   <link rel="icon" href="Bistro Yahya.png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <!-- Local business / restaurant schema -->
+  <!-- Restaurant Schema JSON-LD -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"Restaurant",
-    "name":"Bistro Yahya",
-    "address":{
-      "@type":"PostalAddress",
-      "streetAddress":"Azad Nagar, Jali Rd, opp. to Rural Police Station, Devinagar",
-      "addressLocality":"Bhatkal",
-      "addressRegion":"Karnataka",
-      "postalCode":"581320",
-      "addressCountry":"IN"
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Bistro Yahya",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Azad Nagar, Jali Rd, opp. to Rural Police Station, Devinagar",
+      "addressLocality": "Bhatkal",
+      "addressRegion": "Karnataka",
+      "postalCode": "581320",
+      "addressCountry": "IN"
     },
-    "telephone":"+91 9611113310",
-    "servesCuisine":["Italian","Café","Fast Food","Bakery","Desserts","Juices"],
-    "priceRange":"₹₹",
+    "telephone": "+91 9611113310",
+    "servesCuisine": ["Italian","Café","Fast Food","Bakery","Desserts","Juices"],
+    "priceRange": "₹₹",
     "acceptsReservations": true,
-    "url":"https://bistroyahya.com"
+    "url": "https://bistroyahya.com",
+    "image": "Bistro Yahya (1).png",
+    "openingHours": "Mo-Su 15:00-23:00"
   }
   </script>
 
@@ -54,7 +62,7 @@
     h2{font-size:clamp(28px,3.2vw,32px)}
     h3{font-size:clamp(20px,2.4vw,24px)}
     a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
+    img{max-width:100%;display:block;border-radius:18px}
     .container{max-width:var(--max);margin:0 auto;padding:0 20px}
 
     /* Announcement bar */
@@ -63,65 +71,72 @@
     .announce .bar .tag{background:var(--accent);color:#fff;padding:6px 10px;border-radius:999px;font-weight:700}
     .announce .bar a{font-weight:700;text-decoration:underline}
 
-    /* Header / Branding */
+    /* Header */
     header{position:sticky;top:0;background:rgba(255,247,248,.85);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--border);z-index:50;min-height:72px}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
     .brand{display:flex;gap:12px;align-items:center}
-    .brand img{width:56px;height:56px;border-radius:14px;border:1px solid var(--border);object-fit:cover}
+    .brand img{width:56px;height:56px;border-radius:14px;object-fit:cover;border:1px solid var(--border)}
     .brand .name{font-weight:800;letter-spacing:.2px;font-size:clamp(20px,3vw,28px)}
     .nav a{padding:12px 14px;border-radius:999px;line-height:1}
     .ghost{color:var(--muted)}
     .cta{background:var(--accent);color:#fff;font-weight:700;padding:12px 18px;border-radius:999px;display:inline-flex;gap:8px;align-items:center;box-shadow:var(--shadow)}
-    .cta:focus-visible{outline:2px solid #000}
+    .btn{border:2px solid var(--accent);border-radius:999px;padding:10px 16px;font-weight:700;background:#fff}
+    .btn:hover{background:var(--accent);color:#fff}
 
-    /* Hero with dual carousels */
-    .hero{position:relative;padding:16px 0 32px}
-    .hero-wrap{display:grid;grid-template-columns:1fr 1fr;gap:8px;min-height:56vh}
-    .slidebox{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--border);background:#fff}
+    /* Lead section (headline + CTAs) */
+    .lead-wrap{padding:28px 0}
+    .lead-wrap p{color:var(--muted);margin:6px 0 18px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+
+    /* Dual carousels (no overlay) */
+    .hero{padding:8px 0 24px}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .slidebox{position:relative;border-radius:24px;overflow:hidden;border:1px solid var(--border);background:#fff;aspect-ratio:16/9}
     .slidebox img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s ease}
     .slidebox img.active{opacity:1}
-    .overlay{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;pointer-events:none}
-    .overlay-inner{max-width:820px}
-    .overlay p{color:#2a2a2a;margin:6px 0 18px}
-    .overlay .actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-    .btn{border:2px solid var(--accent);border-radius:999px;padding:10px 16px;font-weight:700;background:#fff}
-    .btn-outline{background:transparent;color:var(--text)}
 
-    /* Sections */
-    section{padding:48px 0}
-    .quick{padding:32px 0}
-    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px;display:grid;place-items:center;gap:8px;min-height:120px;box-shadow:var(--shadow)}
+    /* Intro + pills */
+    section{padding:40px 0}
+    .pillbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .pill{border:1px solid var(--border);padding:8px 12px;border-radius:999px;background:#fff;color:var(--muted)}
+
+    /* What's Cooking grid (3 per row) */
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .mini-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:12px;box-shadow:var(--shadow);display:grid;grid-template-rows:auto 1fr}
+    .mini-card img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px}
+    .mini-card h4{margin:10px 0 6px}
+    .mini-card p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Two-column section */
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-    .map{border:0;width:100%;height:360px;border-radius:16px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
 
-    /* Highlights slider */
-    .highs{position:relative}
-    .highs .rail{display:flex;gap:12px;overflow:auto;scroll-snap-type:x mandatory;padding-bottom:4px}
-    .highs .item{flex:0 0 240px;scroll-snap-align:start;border:1px solid var(--border);border-radius:16px;padding:14px;background:#fff;box-shadow:var(--shadow)}
-    .highs .item h4{margin:8px 0 6px}
-    .highs .item p{margin:0;color:var(--muted)}
+    /* Map */
+    .map{border:0;width:100%;height:360px;border-radius:16px}
 
     /* Footer */
     footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);margin-top:32px}
     .foot{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:center}
     .links a{padding:8px 10px}
-    .social a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid var(--border);margin-left:8px}
 
     /* Sticky mobile action bar */
     .actionbar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--border);display:none;z-index:60}
     .actionbar .row{display:grid;grid-template-columns:repeat(3,1fr)}
     .actionbar a{display:flex;align-items:center;justify-content:center;gap:8px;height:60px;font-weight:700}
+
     @media (max-width:1024px){
-      .hero-wrap{grid-template-columns:1fr}
-      .cards{grid-template-columns:repeat(2,1fr)}
+      .hero-grid{grid-template-columns:1fr}
       .grid-2{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr 1fr}
       .actionbar{display:block}
+    }
+    @media (max-width:560px){
+      .grid3{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
-  <!-- Opening Soon announcement -->
+  <!-- Announcement -->
   <div class="announce">
     <div class="bar">
       <span class="tag">Opening Soon</span>
@@ -137,7 +152,7 @@
         <span class="name">Bistro Yahya</span>
       </a>
       <nav class="row" aria-label="Primary">
-        <a class="ghost" href="#menu-links" style="min-height:44px;display:inline-flex;align-items:center">Menu</a>
+        <a class="ghost" href="#whats-cooking" style="min-height:44px;display:inline-flex;align-items:center">Menu</a>
         <a class="ghost" href="#chef" style="min-height:44px;display:inline-flex;align-items:center">Meet the Chef</a>
         <a class="ghost" href="#visit" style="min-height:44px;display:inline-flex;align-items:center">Visit Us</a>
         <a class="cta" href="menu.html" aria-label="Order Now">📜 Order Now</a>
@@ -146,13 +161,25 @@
   </header>
 
   <main id="top">
-    <!-- HERO with dual carousels -->
+    <!-- Lead: headline + subline + CTAs -->
+    <section class="lead-wrap">
+      <div class="container">
+        <h1>Welcome to Bistro Yahya – Where Every Bite Tells a Story</h1>
+        <p>Handcrafted bakes, bold flavors, and a dash of love from Bhatkal’s very own Chef Yahya.</p>
+        <div class="actions">
+          <a class="cta" href="menu.html" aria-label="Order Now">📜 Order Now</a>
+          <a class="btn" href="#chef" aria-label="Meet the Chef">👨‍🍳 Meet the Chef</a>
+          <a class="btn" href="#visit" aria-label="Visit Us">📍 Visit Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dual carousels (no overlays) -->
     <section class="hero">
-      <div class="container hero-wrap">
-        <!-- You currently have hero.jpeg, Gallery1.jpeg, Gallery2.jpeg. Using those. -->
+      <div class="container hero-grid">
         <div class="slidebox" id="ambience">
           <img src="Gallery1.jpeg" alt="Pink floral cabins" class="active" loading="eager" />
-          <img src="Gallery2.jpeg" alt="Arched decor and cozy seating" loading="lazy" />
+          <img src="Gallery2.jpeg" alt="Arched décor and cozy seating" loading="lazy" />
           <img src="hero.jpeg" alt="Cabin ambience" loading="lazy" />
         </div>
         <div class="slidebox" id="food">
@@ -160,73 +187,102 @@
           <img src="Gallery1.jpeg" alt="Brownies and donuts" loading="lazy" />
           <img src="Gallery2.jpeg" alt="Fresh croissants and coffee" loading="lazy" />
         </div>
-        <div class="overlay" aria-hidden="true">
-          <div class="overlay-inner">
-            <h1>Welcome to Bistro Yahya – Where Every Bite Tells a Story</h1>
-            <p>Handcrafted bakes, bold flavors, and a dash of love from Bhatkal’s very own Chef Yahya.</p>
-            <div class="actions">
-              <a class="cta" href="menu.html" aria-label="Order Now">📜 Order Now</a>
-              <a class="btn btn-outline" href="#chef" aria-label="Meet the Chef">👨‍🍳 Meet the Chef</a>
-              <a class="btn btn-outline" href="#visit" aria-label="Visit Us">📍 Visit Us</a>
-            </div>
+      </div>
+    </section>
+
+    <!-- Introduction & pills -->
+    <section id="intro">
+      <div class="container">
+        <p>Welcome to <strong>Bistro Yahya</strong> — cozy arched cabins, flowers everywhere, and a menu of pastas, pizzas, burgers, sandwiches, rolls, brownies, donuts, cinnamon buns and fresh specialty juices. Reserve your private cabin today.</p>
+        <div class="pillbar">
+          <span class="pill">7 Private Cabins</span>
+          <span class="pill">Specialty Juices</span>
+          <span class="pill">Veg & Non-Veg</span>
+          <span class="pill">Dine-in • Takeaway • Delivery</span>
+        </div>
+        <div style="margin-top:14px">
+          <a class="cta" href="menu.html" aria-label="View Full Menu">📖 View Full Menu</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- What's Cooking (3 per row) -->
+    <section id="whats-cooking">
+      <div class="container">
+        <h2>🍰 What’s Baking & Cooking?</h2>
+        <div class="grid3" style="margin-top:12px">
+          <div class="mini-card">
+            <img src="Gallery2.jpeg" alt="Brownies" loading="lazy">
+            <h4>Brownies</h4><p>Fudgy, rich, and impossible to eat just one.</p>
+          </div>
+          <div class="mini-card">
+            <img src="hero.jpeg" alt="Donuts" loading="lazy">
+            <h4>Donuts</h4><p>Fluffy, glazed, and filled with surprises.</p>
+          </div>
+          <div class="mini-card">
+            <img src="Gallery1.jpeg" alt="Cinnabons" loading="lazy">
+            <h4>Cinnabons</h4><p>Sweet swirls with a perfect cinnamon crunch.</p>
+          </div>
+          <div class="mini-card">
+            <img src="hero.jpeg" alt="Pizza" loading="lazy">
+            <h4>Pizza</h4><p>Crusts topped with global flavors.</p>
+          </div>
+          <div class="mini-card">
+            <img src="Gallery2.jpeg" alt="Pasta" loading="lazy">
+            <h4>Pasta</h4><p>Creamy, cheesy, spicy — your way.</p>
+          </div>
+          <div class="mini-card">
+            <img src="Gallery1.jpeg" alt="Croissants" loading="lazy">
+            <h4>Croissants</h4><p>Buttery, flaky, and baked fresh.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- MENU LINKS / ICON CARDS -->
-    <section id="menu-links" class="quick">
-      <div class="container cards" role="list">
-        <a class="card" href="#cabins" role="listitem" aria-label="Cabins"><div>🛋️</div><strong>Cabins</strong></a>
-        <a class="card" href="menu.html" role="listitem" aria-label="Full Menu"><div>📜</div><strong>Full Menu</strong></a>
-        <a class="card" href="#chef" role="listitem" aria-label="Meet the Chef"><div>👨‍🍳</div><strong>Meet the Chef</strong></a>
-        <a class="card" href="#visit" role="listitem" aria-label="Visit Us"><div>📍</div><strong>Visit Us</strong></a>
-      </div>
-    </section>
-
-    <!-- CHEF SECTION -->
-    <section id="chef" class="quick">
+    <!-- Meet Chef (left) + Reservations & Hours (right) -->
+    <section id="chef">
       <div class="container grid-2">
-        <div>
+        <div class="card">
           <h2>👨‍🍳 Meet Chef Yahya</h2>
           <p>Say hello to Chef Yahya, an exciting culinary talent from India! With hands-on expertise in baking brownies, donuts, and cinnabons, Chef Yahya is on a mission to delight your taste buds. His passion doesn’t stop at baking – he’s also skilled in Italian, French, and Indian cuisine. At Bistro Yahya, every dish is made with precision, heart, and flavor.</p>
           <blockquote style="margin:8px 0 0;padding-left:12px;border-left:3px solid var(--accent);color:#333"><em>“I believe food isn’t just to fill the stomach, but to fill the heart. My goal is to bring global flavors to our beautiful town, one delicious bite at a time.”</em> – Chef Yahya</blockquote>
         </div>
-        <div class="slidebox">
-          <img src="Gallery2.jpeg" alt="Chef’s desserts" class="active" loading="lazy" />
-          <img src="hero.jpeg" alt="Fresh bakes" loading="lazy" />
+        <div class="card">
+          <h2>Reservations & Hours</h2>
+          <p class="muted">Cabins are limited — message us to reserve for opening week.</p>
+          <ul>
+            <li><strong>Hours:</strong> 3:00 pm – 11:00 pm (daily)</li>
+            <li><strong>Phone:</strong> <a href="tel:+919611113310">+91 96 1111 3310</a></li>
+            <li><strong>WhatsApp:</strong> <a href="https://wa.me/919611113310" target="_blank" rel="noopener">Chat now</a></li>
+          </ul>
+          <div class="pillbar">
+            <a class="cta" href="https://wa.me/919611113310?text=Hi%20Bistro%20Yahya!%20I%27d%20like%20to%20reserve%20a%20cabin." target="_blank" rel="noopener">Reserve a Cabin</a>
+            <a class="btn" href="menu.html">📜 Full Menu</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- MENU HIGHLIGHTS SLIDER -->
-    <section class="quick highs">
-      <div class="container">
-        <h2>🍰 What’s Baking & Cooking?</h2>
-        <div class="rail" aria-label="Highlights">
-          <div class="item"><h4>Brownies</h4><p>Fudgy, rich, and impossible to eat just one.</p></div>
-          <div class="item"><h4>Donuts</h4><p>Fluffy, glazed, and filled with surprises.</p></div>
-          <div class="item"><h4>Cinnabons</h4><p>Sweet swirls with a perfect cinnamon crunch.</p></div>
-          <div class="item"><h4>Pizza</h4><p>Crusts topped with global flavors.</p></div>
-          <div class="item"><h4>Pasta</h4><p>Creamy, cheesy, spicy – your way.</p></div>
-          <div class="item"><h4>Croissants</h4><p>Buttery, flaky, baked fresh.</p></div>
-        </div>
-        <div style="margin-top:14px"><a class="cta" href="menu.html" aria-label="View Full Menu">📜 View Full Menu</a></div>
-      </div>
-    </section>
-
-    <!-- LOCATION / VISIT -->
-    <section id="visit" class="quick">
+    <!-- Visit -->
+    <section id="visit">
       <div class="container grid-2">
-        <div>
+        <div class="card">
           <h2>📍 Visit Bistro Yahya</h2>
-          <p><strong>Address:</strong> Jali Road, Bhatkal<br/>
-             <strong>Phone:</strong> <a href="tel:+919611113310">+91 96111 13310</a></p>
-          <p>Come by for a cozy bite, a warm cup of coffee, or just to say hi. We’d love to have you!</p>
-          <p><a class="cta" href="https://maps.google.com/?q=Jali%20Road%2C%20Bhatkal" target="_blank" rel="noopener" aria-label="Get Directions">🧭 Get Directions</a></p>
+          <p>
+            Azad Nagar, Jali Rd, opp. to Rural Police Station, Devinagar<br/>
+            Bhatkal, Karnataka 581320
+          </p>
+          <div class="pillbar">
+            <a class="cta" href="https://maps.google.com/?q=Azad%20Nagar%2C%20Jali%20Rd%2C%20opp.%20to%20Rural%20Police%20Station%2C%20Devinagar%2C%20Bhatkal%2C%20Karnataka%20581320" target="_blank" rel="noopener">🧭 Get Directions</a>
+            <a class="btn" href="mailto:hello@bistroyahya.com">Email Us</a>
+          </div>
         </div>
-        <div>
-          <iframe class="map" src="https://www.google.com/maps?q=Jali%20Road%2C%20Bhatkal&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Map to Bistro Yahya"></iframe>
+        <div class="card">
+          <iframe class="map"
+            src="https://www.google.com/maps?q=Azad%20Nagar%2C%20Jali%20Rd%2C%20opp.%20to%20Rural%20Police%20Station%2C%20Devinagar%2C%20Bhatkal%2C%20Karnataka%20581320&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            aria-label="Map to Bistro Yahya">
+          </iframe>
         </div>
       </div>
     </section>
@@ -239,10 +295,10 @@
       <nav class="links" aria-label="Quick Links">
         <a href="#chef">About</a> | <a href="menu.html">Menu</a> | <a href="#visit">Contact</a>
       </nav>
-      <div class="social" aria-label="Social links">
-        <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">IG</a>
-        <a href="https://facebook.com/yourpage" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">FB</a>
-        <a href="https://wa.me/919611113310" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">WA</a>
+      <div class="links" aria-label="Social">
+        <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener">Instagram</a> |
+        <a href="https://facebook.com/yourpage" target="_blank" rel="noopener">Facebook</a> |
+        <a href="https://wa.me/919611113310" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
   </footer>
