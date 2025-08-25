@@ -4,9 +4,49 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Menu | Bistro Yahya</title>
-  <meta name="description" content="View the full Bistro Yahya menu. Pastas, pizzas, burgers, sandwiches, rolls, specialty desserts and fresh juices. Order via WhatsApp or scan in-café." />
+  <meta name="description" content="Browse the full Bistro Yahya menu. Pastas, pizzas, burgers, sandwiches, rolls, specialty desserts (brownies, donuts, cinnamon buns) and fresh juices. Order via WhatsApp or scan in-café." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Menu | Bistro Yahya" />
+  <meta property="og:description" content="Pastas, pizzas, burgers, sandwiches, rolls, specialty desserts (brownies, donuts, cinnamon buns) and fresh juices. Reserve your private cabin or order online." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bistroyahya.com/menu" />
+  <meta property="og:image" content="Bistro Yahya (1).png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Menu | Bistro Yahya" />
+  <meta name="twitter:description" content="Browse Bistro Yahya’s full menu — pastas, pizzas, burgers, sandwiches, rolls, specialty desserts and fresh juices." />
+  <meta name="twitter:image" content="Bistro Yahya (1).png" />
+
   <link rel="icon" href="Bistro Yahya.png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Restaurant Schema JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Bistro Yahya",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Azad Nagar, Jali Rd, opp. to Rural Police Station, Devinagar",
+      "addressLocality": "Bhatkal",
+      "addressRegion": "Karnataka",
+      "postalCode": "581320",
+      "addressCountry": "IN"
+    },
+    "telephone": "+91 9611113310",
+    "servesCuisine": ["Italian","Café","Fast Food","Bakery","Desserts","Juices"],
+    "priceRange": "₹₹",
+    "acceptsReservations": true,
+    "url": "https://bistroyahya.com/menu",
+    "image": "Bistro Yahya (1).png",
+    "openingHours": "Mo-Su 15:00-23:00",
+    "hasMenu": { "@type": "Menu", "url": "https://bistroyahya.com/menu" }
+  }
+  </script>
+
   <style>
     :root{ --bg:#fff7f8; --card:#ffffff; --text:#222; --muted:#666; --accent:#ff7aa2; --accent-2:#f3c6cf; --leaf:#7bb089; --border:#f0dbe0; --max:1120px; --radius:18px; --shadow:0 10px 30px rgba(255,122,162,.18); }
     *{box-sizing:border-box}
