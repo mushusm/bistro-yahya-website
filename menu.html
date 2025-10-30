@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Menu | Bistro Yahya</title>
-  <meta name="description" content="Browse the full Bistro Yahya menu — pastas, pizzas, burgers, sandwiches, rolls, desserts, and specialty juices. Order via WhatsApp or scan in-café." />
+  <meta name="description" content="Browse the full Bistro Yahya menu. Pastas, pizzas, burgers, sandwiches, rolls, specialty desserts and fresh juices. Order via WhatsApp or scan in-café." />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Menu | Bistro Yahya" />
-  <meta property="og:description" content="Explore Bistro Yahya’s full menu — from pizzas and burgers to specialty desserts and juices. Reserve your private cabin or order online." />
+  <meta property="og:description" content="Pastas, pizzas, burgers, sandwiches, rolls, specialty desserts (brownies, donuts, cinnamon buns) and fresh juices. Reserve your private cabin or order online." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://bistroyahya.com/menu" />
   <meta property="og:image" content="images/ambience/bistro-yahya-pink-cabin.webp" />
@@ -16,14 +16,16 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Menu | Bistro Yahya" />
-  <meta name="twitter:description" content="Browse Bistro Yahya’s full menu — pastas, pizzas, burgers, sandwiches, rolls, desserts, and juices." />
+  <meta name="twitter:description" content="Browse Bistro Yahya’s full menu — pastas, pizzas, burgers, sandwiches, rolls, specialty desserts and fresh juices." />
   <meta name="twitter:image" content="images/ambience/bistro-yahya-pink-cabin.webp" />
 
   <link rel="icon" href="images/logo/bistro-yahya-logo.png" />
-  <link rel="canonical" href="https://bistroyahya.com/menu" />
+  <link rel="preload" href="images/ambience/bistro-yahya-pink-cabin.webp" as="image">
+  <link rel="canonical" href="https://bistroyahya.com/menu">
+
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <!-- Restaurant Schema -->
+  <!-- Restaurant Schema JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -38,38 +40,23 @@
       "addressCountry": "IN"
     },
     "telephone": "+91 9611113310",
-    "servesCuisine": ["Italian", "Café", "Fast Food", "Bakery", "Desserts", "Juices"],
+    "servesCuisine": ["Italian","Café","Fast Food","Bakery","Desserts","Juices"],
     "priceRange": "₹₹",
     "acceptsReservations": true,
     "url": "https://bistroyahya.com/menu",
     "image": "https://bistroyahya.com/images/ambience/bistro-yahya-pink-cabin.webp",
     "openingHours": ["Mo-Su 15:00-23:00"],
     "hasMenu": { "@type": "Menu", "url": "https://bistroyahya.com/menu" },
-    "sameAs": [
-      "https://instagram.com/yourhandle",
-      "https://facebook.com/yourpage"
-    ]
+    "sameAs": ["https://instagram.com/yourhandle", "https://facebook.com/yourpage"]
   }
   </script>
 
   <style>
-    :root {
-      --bg: #fff7f8;
-      --card: #ffffff;
-      --text: #222;
-      --muted: #666;
-      --accent: #ff7aa2;
-      --accent-2: #f3c6cf;
-      --leaf: #7bb089;
-      --border: #f0dbe0;
-      --max: 1120px;
-      --radius: 18px;
-      --shadow: 0 10px 30px rgba(255,122,162,.18);
-    }
+    :root{ --bg:#fff7f8; --card:#ffffff; --text:#222; --muted:#666; --accent:#ff7aa2; --accent-2:#f3c6cf; --leaf:#7bb089; --border:#f0dbe0; --max:1120px; --radius:18px; --shadow:0 10px 30px rgba(255,122,162,.18); }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     html,body{margin:0;background:var(--bg);color:var(--text);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}
-    body{font-size:16px}
+    body{font-size:16px} @media (max-width:768px){body{font-size:18px}}
     h1,h2,h3{font-family:"Playfair Display",serif;line-height:1.2;margin:0 0 8px}
     h1{font-size:clamp(36px,5vw,48px)}
     h2{font-size:clamp(28px,3.2vw,32px)}
@@ -77,6 +64,12 @@
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
     .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+    /* Skip link */
+    .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{left:10px;top:10px;width:auto;height:auto;padding:8px 12px;background:#000;color:#fff;border-radius:6px;z-index:9999}
+
+    /* Header */
     header{position:sticky;top:0;background:rgba(255,247,248,.95);backdrop-filter:saturate(180%) blur(6px);border-bottom:1px solid var(--border);z-index:50;min-height:72px}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
     .brand{display:flex;gap:12px;align-items:center}
@@ -85,17 +78,36 @@
     .primary-links{display:flex;gap:10px;align-items:center}
     .ribbon{display:inline-block;background:#fff;border:1px solid var(--border);padding:6px 12px;border-radius:999px}
     .cta{background:var(--accent);color:#fff;font-weight:700;padding:10px 14px;border-radius:999px;box-shadow:var(--shadow);border:0}
+
+    /* Mobile hamburger */
+    .nav-toggle{display:none;background:transparent;border:0;padding:8px;border-radius:8px;cursor:pointer;font-size:16px;color:var(--text)}
+    .mobile-menu{display:none;position:fixed;inset:auto 12px 80px 12px;background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.08);padding:12px;z-index:70;flex-direction:column;gap:8px;max-width:420px}
+    .mobile-menu a{display:block;padding:10px 12px;border-radius:10px;font-weight:700;text-decoration:none;color:var(--text)}
+    .mobile-menu a:hover,.mobile-menu a:focus{background:var(--accent-2);outline:none}
+    .mobile-menu[aria-hidden="false"]{display:flex}
+
     main{padding:0 0 28px}
+
+    /* Menu hero */
     .menu-hero{background:#fff;padding:32px 0 16px;border-bottom:1px solid var(--border)}
     .menu-hero .sub{color:var(--muted);max-width:760px}
+
+    /* Controls + grid */
     .controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:18px 0}
     .input{background:#fff;border:1px solid var(--border);border-radius:999px;padding:10px 14px;min-width:240px}
     .chip{background:#fff;border:1px solid var(--border);border-radius:999px;padding:8px 12px;cursor:pointer}
     .chip.active{background:#ffe3ec;border-color:#ffd1e2}
-    .chip.cart {position:relative;display:inline-flex;align-items:center;gap:8px;}
-    .chip .badge {background:var(--accent);color:#fff;border-radius:999px;padding:2px 8px;font-weight:700;font-size:12px;min-width:20px;text-align:center;display:inline-block;}
     .grid{display:grid;grid-template-columns:2fr 1fr;gap:20px}
+
+    /* Cart chip styling */
+    .chip.cart { position:relative; display:inline-flex; align-items:center; gap:8px; }
+    .chip .badge { background:var(--accent); color:#fff; border-radius:999px; padding:2px 8px; font-weight:700; font-size:12px; min-width:20px; text-align:center; display:inline-block; }
+    @media (min-width:981px){
+      .chip.cart { display:inline-flex; }
+    }
+
     .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .sec{margin-bottom:18px}
     .item{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px dashed var(--border)}
     .item:last-child{border-bottom:none}
     .muted{color:var(--muted)}
@@ -108,61 +120,104 @@
     .total{font-weight:800;font-size:18px}
     .note{font-size:12px;color:var(--muted)}
     .tag{display:inline-block;background:var(--leaf);color:#fff;border-radius:999px;padding:2px 8px;font-size:12px;margin-left:8px}
+
     footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);margin-top:32px}
     .foot{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:center}
     .links a{padding:8px 10px}
     .actionbar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--border);display:none;z-index:60}
     .actionbar .row{display:grid;grid-template-columns:repeat(3,1fr)}
     .actionbar a{display:flex;align-items:center;justify-content:center;gap:8px;height:60px;font-weight:700}
-    @media (max-width:980px){.grid{grid-template-columns:1fr}.actionbar{display:block}}
+
+    /* Active link style */
+    header a.active-link{background:linear-gradient(90deg,var(--accent) 0%,var(--accent-2) 100%);color:#fff;box-shadow:var(--shadow)}
+
+    @media (max-width:980px){
+      .grid{grid-template-columns:1fr}
+      .actionbar{display:block}
+    }
+    @media (max-width:560px){
+      .primary-links{display:none}
+      .nav-toggle{display:inline-flex;align-items:center;gap:8px}
+    }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header>
-    <div class="container nav">
-      <a class="brand" href="./"><img src="images/logo/bistro-yahya-logo.png" alt="Bistro Yahya logo"/><strong>Bistro Yahya</strong></a>
-      <nav class="primary-links">
+    <div class="container nav" role="navigation" aria-label="Main navigation">
+      <a class="brand" href="./" aria-label="Bistro Yahya Home">
+        <img src="images/logo/bistro-yahya-logo.png" alt="Bistro Yahya logo" />
+        <strong>Bistro Yahya</strong>
+      </a>
+
+      <!-- Desktop links -->
+      <nav class="primary-links" aria-label="Primary links">
         <a class="ribbon" href="./">← Home</a>
-        <a class="cta" href="https://wa.me/919611113310?text=Hi%20Bistro%20Yahya!%20I'd%20like%20to%20reserve%20a%20cabin.">Reserve a Cabin</a>
+        <a class="cta" href="https://wa.me/919611113310?text=Hi%20Bistro%20Yahya!%20I%27d%20like%20to%20reserve%20a%20cabin." target="_blank" rel="noopener noreferrer" aria-label="Reserve a Cabin">Reserve a Cabin</a>
       </nav>
+
+      <!-- Mobile toggle -->
+      <button id="nav-toggle" class="nav-toggle" aria-controls="mobile-menu" aria-expanded="false" aria-haspopup="true" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="mobile-menu" role="menu" aria-hidden="true">
+        <a role="menuitem" href="./">Home</a>
+        <a role="menuitem" href="./#chef">About</a>
+        <a role="menuitem" href="menu.html">Menu</a>
+        <a role="menuitem" href="./#visit">Visit</a>
+        <a role="menuitem" href="tel:+919611113310">📞 Call</a>
+        <a role="menuitem" href="https://wa.me/919611113310" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
+      </div>
     </div>
   </header>
 
-  <main>
+  <main id="main" aria-labelledby="main-heading">
     <section class="menu-hero">
       <div class="container">
-        <h1>Our Menu</h1>
+        <h1 id="main-heading">Our Menu</h1>
         <p class="sub"><em>“I believe food isn’t just to fill the stomach, but to fill the heart. My goal is to bring global flavors to our beautiful town, one delicious bite at a time.”</em> – Chef Yahya</p>
       </div>
     </section>
 
     <div class="container">
       <div class="controls">
-        <input id="search" class="input" placeholder="Search (pizza, burger, fries...)" />
+        <input id="search" class="input" placeholder="Search (pizza, brownie, juice...)" aria-label="Search the menu" />
         <div id="chip-root" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
       </div>
 
       <div class="grid">
-        <div id="menu-root"></div>
-        <aside class="card sticky">
+        <div id="menu-root" aria-live="polite"></div>
+
+        <aside class="card sticky" aria-labelledby="order-heading">
           <div class="summary">
-            <h3>Your Order</h3>
+            <h3 id="order-heading">Your Order</h3>
+
             <div class="sec">
               <label class="muted" for="custName">Your Name</label>
               <input id="custName" class="input" placeholder="Your name" />
             </div>
+
             <div class="sec">
               <label class="muted" for="custPhone">Phone</label>
               <input id="custPhone" class="input" placeholder="+91 9XXXXXXXXX" inputmode="tel" />
             </div>
-            <div id="order-lines" class="sec"></div>
+
+            <div id="order-lines" class="sec" aria-live="polite"></div>
+
             <div class="line"><span class="muted">Subtotal</span><span id="subtotal">₹0</span></div>
             <div class="line total"><span>Total</span><span id="total">₹0</span></div>
+
             <div style="display:flex;gap:8px;margin-top:10px">
-              <a id="waCheckout" class="cta disabled" target="_blank">Checkout on WhatsApp</a>
-              <button id="clearCart" class="btn" type="button">Clear Cart</button>
+              <a id="waCheckout" class="cta disabled" target="_blank" rel="noopener noreferrer" aria-disabled="true">Checkout on WhatsApp</a>
+              <button id="clearCart" class="btn" type="button" aria-label="Clear cart">Clear Cart</button>
             </div>
-            <div class="note">Payment at café on delivery. Prices inclusive of taxes.</div>
+
+            <div class="note">Payment at café on delivery to cabin / counter. Prices inclusive of taxes (where applicable).</div>
           </div>
         </aside>
       </div>
@@ -172,124 +227,432 @@
   <footer>
     <div class="container foot">
       <div>© <span id="year"></span> Bistro Yahya. All rights reserved.</div>
-      <div class="links"><a href="./#chef">About</a> | <a href="menu.html">Menu</a> | <a href="./#visit">Contact</a></div>
+      <nav class="links" aria-label="Quick Links"><a href="./#chef">About</a> | <a href="menu.html">Menu</a> | <a href="./#visit">Contact</a></nav>
+      <div aria-label="Social" class="links"><a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer">Instagram</a> | <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer">Facebook</a> | <a href="https://wa.me/919611113310" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
     </div>
   </footer>
 
-  <div class="actionbar">
+  <!-- Sticky mobile action bar -->
+  <div class="actionbar" aria-hidden="true">
     <div class="row">
-      <a href="menu.html">📜 Order Now</a>
-      <a href="tel:+919611113310">📞 Call</a>
-      <a href="https://wa.me/919611113310">💬 WhatsApp</a>
+      <a href="menu.html" aria-label="Order Now">📜 Order Now</a>
+      <a href="tel:+919611113310" aria-label="Call Bistro Yahya">📞 Call</a>
+      <a href="https://wa.me/919611113310?text=Hi%20Bistro%20Yahya!%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Bistro Yahya">💬 WhatsApp</a>
     </div>
   </div>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // Basic page setup
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    const PHONE = "919611113310";
-    const root = document.getElementById("menu-root");
-    const orderLines = document.getElementById("order-lines");
-    const subtotalEl = document.getElementById("subtotal");
-    const totalEl = document.getElementById("total");
-    const waCheckout = document.getElementById("waCheckout");
-    const chipRoot = document.getElementById("chip-root");
-    const custName = document.getElementById("custName");
-    const custPhone = document.getElementById("custPhone");
-    const clearCartBtn = document.getElementById("clearCart");
+    // NAV: accessible hamburger with focus trap and Escape; restores focus
+    (function(){
+      const btn = document.getElementById('nav-toggle');
+      const menu = document.getElementById('mobile-menu');
+      if(!btn || !menu) return;
+      const FOCUSABLE = 'a, button, input, [tabindex]:not([tabindex="-1"])';
+      btn._prevFocus = null;
+
+      function openMenu(){
+        btn.setAttribute('aria-expanded','true');
+        btn.setAttribute('aria-label','Close menu');
+        menu.setAttribute('aria-hidden','false');
+        btn._prevFocus = document.activeElement;
+        const first = menu.querySelector(FOCUSABLE);
+        if(first) first.focus();
+        document.addEventListener('keydown', handleKeydown);
+        document.addEventListener('click', handleOutsideClick);
+      }
+
+      function closeMenu(){
+        btn.setAttribute('aria-expanded','false');
+        btn.setAttribute('aria-label','Open menu');
+        menu.setAttribute('aria-hidden','true');
+        if(btn._prevFocus) try{ btn._prevFocus.focus(); }catch(e){}
+        document.removeEventListener('keydown', handleKeydown);
+        document.removeEventListener('click', handleOutsideClick);
+      }
+
+      function handleKeydown(e){
+        if(e.key === 'Escape'){ closeMenu(); return; }
+        if(e.key === 'Tab'){
+          const focusables = Array.from(menu.querySelectorAll(FOCUSABLE)).filter(el => !el.hasAttribute('disabled'));
+          if(focusables.length === 0) return;
+          const first = focusables[0];
+          const last = focusables[focusables.length -1];
+          if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+          else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+        }
+      }
+
+      function handleOutsideClick(e){
+        if(menu.contains(e.target) || btn.contains(e.target)) return;
+        if(menu.getAttribute('aria-hidden') === 'false') closeMenu();
+      }
+
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        if(expanded) closeMenu(); else openMenu();
+      });
+
+      // ensure menu closed when resizing to desktop
+      window.addEventListener('resize', () => {
+        if(window.innerWidth > 560 && menu.getAttribute('aria-hidden') === 'false') closeMenu();
+      });
+    })();
+
+    // MENU + CART
+    const PHONE = '919611113310';
+    const root = document.getElementById('menu-root');
+    const orderLines = document.getElementById('order-lines');
+    const subtotalEl = document.getElementById('subtotal');
+    const totalEl = document.getElementById('total');
+    const waCheckout = document.getElementById('waCheckout');
+    const searchInput = document.getElementById('search');
+    const chipRoot = document.getElementById('chip-root');
+    const custName = document.getElementById('custName');
+    const custPhone = document.getElementById('custPhone');
+    const clearCartBtn = document.getElementById('clearCart');
 
     let data = { sections: [] };
-    let cart = JSON.parse(localStorage.getItem("by_cart") || "{}");
-    let chips = [];
+    let cart = JSON.parse(localStorage.getItem('by_cart')||'{}');
+    let activeFilter = 'all';
+    let chips = []; // chip buttons
 
-    function saveCart(){ localStorage.setItem("by_cart", JSON.stringify(cart)); }
-    function currency(n){ return "₹" + (Number(n) || 0); }
+    // saveCart now records timestamp for expiry logic
+    function saveCart(){ 
+      localStorage.setItem('by_cart', JSON.stringify(cart)); 
+      try { localStorage.setItem('by_cart_ts', Date.now().toString()); } catch(e) {}
+    }
+    function currency(n){ const num = Number(n); return '₹' + (Number.isFinite(num)? num : 0); }
+
+    // expireOldCart: clear cart if older than given days (default 7)
+    function expireOldCart(days = 7){
+      try {
+        const ts = Number(localStorage.getItem('by_cart_ts') || '0');
+        if(!ts) return;
+        const ageMs = Date.now() - ts;
+        if(ageMs > days * 24 * 60 * 60 * 1000){
+          cart = {};
+          saveCart();
+        }
+      } catch (e) { /* ignore localStorage errors */ }
+    }
+
+    function sectionMatches(title){ if(activeFilter==='all') return true; const key = (activeFilter||'').toLowerCase(); return (title||'').toLowerCase().includes(key); }
+
+    function itemMatches(item){
+      const q = searchInput.value.trim().toLowerCase();
+      if(!q) return true;
+      return (item.name||'').toLowerCase().includes(q) || (item.desc||'').toLowerCase().includes(q);
+    }
 
     function render(){
-      root.innerHTML = "";
-      (data.sections||[]).forEach(sec=>{
-        const card=document.createElement("div");
-        card.className="card";
-        card.innerHTML=`<h2>${sec.title}</h2>`;
-        (sec.items||[]).forEach(item=>{
-          const key=`${sec.title}|${item.name}`;
-          const qty=cart[key]?.qty||0;
-          const line=document.createElement("div");
-          line.className="item";
-          line.innerHTML=`
-            <div><strong>${item.name}</strong><div class="muted">${item.desc||""}</div></div>
-            <div class="price">${currency(item.price)}</div>
+      root.innerHTML = '';
+      (data.sections||[]).forEach(sec => {
+        if(!sectionMatches(sec.title||'')) return;
+        const items = (sec.items||[]).filter(itemMatches);
+        if(items.length===0) return;
+
+        const card = document.createElement('div');
+        card.className = 'card sec';
+        card.innerHTML = `<h2>${sec.title||''}</h2>`;
+
+        items.forEach(item => {
+          const key = `${sec.title}|${item.name}`;
+          const qty = cart[key]?.qty || 0;
+          const line = document.createElement('div');
+          line.className = 'item';
+          line.innerHTML = `
+            <div>
+              <strong>${item.name||''}</strong>
+              ${item.veg? '<span class="tag">Veg</span>':''}
+              <div class="muted">${item.desc||''}</div>
+            </div>
+            <div class="price">${currency(item.price ?? 0)}</div>
             <div class="qty">
-              <button class="btn" data-act="dec">−</button>
-              <span>${qty}</span>
-              <button class="btn" data-act="inc">+</button>
+              <button class="btn" data-act="dec" aria-label="Decrease quantity">−</button>
+              <span aria-live="polite">${qty}</span>
+              <button class="btn" data-act="inc" aria-label="Increase quantity">+</button>
             </div>`;
-          line.querySelector("[data-act='dec']").onclick=()=>{if(qty>0){cart[key].qty--;if(cart[key].qty<=0)delete cart[key];saveCart();render();renderSummary();}};
-          line.querySelector("[data-act='inc']").onclick=()=>{cart[key]=cart[key]||{name:item.name,price:item.price};cart[key].qty=(cart[key].qty||0)+1;saveCart();render();renderSummary();};
+
+          // attach aria-labels with item name for screen readers
+          const decBtn = line.querySelector('[data-act="dec"]');
+          const incBtn = line.querySelector('[data-act="inc"]');
+          if(decBtn) decBtn.setAttribute('aria-label', `Decrease quantity for ${item.name}`);
+          if(incBtn) incBtn.setAttribute('aria-label', `Increase quantity for ${item.name}`);
+
+          // handlers
+          if(decBtn){
+            decBtn.onclick = ()=>{
+              const currentQty = cart[key]?.qty || 0;
+              if(currentQty>0){
+                cart[key].qty = currentQty - 1;
+                if(cart[key].qty<=0) delete cart[key];
+                saveCart(); render(); renderSummary();
+              }
+            };
+          }
+          if(incBtn){
+            incBtn.onclick = ()=>{
+              const priceNum = Number(item.price) || 0;
+              cart[key] = cart[key]||{name:item.name, price:priceNum};
+              cart[key].qty = (cart[key].qty||0)+1;
+              saveCart(); render(); renderSummary();
+            };
+          }
+
           card.appendChild(line);
         });
         root.appendChild(card);
       });
     }
 
-    function renderSummary(){
-      orderLines.innerHTML="";
-      let subtotal=0;
-      Object.values(cart).forEach(v=>{
-        const line=document.createElement("div");
-        line.className="line";
-        const total=(v.price||0)*v.qty;
-        line.innerHTML=`<span>${v.name} × ${v.qty}</span><span>${currency(total)}</span>`;
-        orderLines.appendChild(line);
-        subtotal+=total;
+    // sanitizeCartAgainstMenu: remove saved cart items that aren't in current menu data
+    function sanitizeCartAgainstMenu() {
+      const valid = new Set();
+      (data.sections || []).forEach(sec => {
+        (sec.items || []).forEach(it => {
+          valid.add(`${sec.title}|${it.name}`);
+        });
       });
-      subtotalEl.textContent=currency(subtotal);
-      totalEl.textContent=currency(subtotal);
+
+      if (!cart || typeof cart !== 'object') { cart = {}; saveCart(); return; }
+
+      let changed = false;
+      Object.keys(cart).forEach(k => {
+        if (!valid.has(k)) { delete cart[k]; changed = true; }
+      });
+
+      if (changed) {
+        saveCart();
+      }
+    }
+
+    // handleMenuVersioning: if data.meta.version exists and differs from stored version, clear cart
+    function handleMenuVersioning(){
+      try {
+        const v = data?.meta?.version;
+        if (v === undefined) return;
+        const saved = Number(localStorage.getItem('by_menu_version') || '0');
+        if (saved !== v){
+          cart = {};
+          saveCart();
+          localStorage.setItem('by_menu_version', String(v));
+        }
+      } catch(e) { /* ignore localStorage errors */ }
+    }
+
+    function makeWaText(){
+      const name = (custName.value||'').trim();
+      const phone = (custPhone.value||'').trim();
+      const lines = ['Bistro Yahya — New Order'];
+      Object.entries(cart).forEach(([, v]) => { lines.push(`• ${v.name} × ${v.qty}`); });
+      const total = Object.entries(cart).reduce((s, [, v]) => s + (Number(v.price)||0) * (v.qty||0), 0);
+      lines.push(`Total: ₹${total}`);
+      lines.push('Cabin/Table (optional): ____');
+      lines.push(`Name: ${name || '____'}  Phone: ${phone || '_____'}`);
+      return lines.join('\n'); // encode when building href
+    }
+
+    function updateWaLink(){
+      const text = encodeURIComponent(makeWaText());
+      waCheckout.href = `https://wa.me/${PHONE}?text=${text}`;
+      waCheckout.target = '_blank';
+      const ready =
+        Object.keys(cart).length>0 &&
+        (custName.value||'').trim().length>0 &&
+        (custPhone.value||'').trim().replace(/\D/g,'').length>=10;
+      if(ready){
+        waCheckout.classList.remove('disabled');
+        waCheckout.removeAttribute('aria-disabled');
+      } else {
+        waCheckout.classList.add('disabled');
+        waCheckout.setAttribute('aria-disabled','true');
+      }
+    }
+
+    function renderSummary(){
+      orderLines.innerHTML = '';
+      let subtotal = 0;
+      Object.values(cart).forEach(v => {
+        const row = document.createElement('div');
+        row.className = 'line';
+        const lineTotal = (Number(v.price)||0) * (v.qty||0);
+        row.innerHTML = `<span>${v.name} × ${v.qty}</span><span>${currency(lineTotal)}</span>`;
+        orderLines.appendChild(row);
+        subtotal += lineTotal;
+      });
+      subtotalEl.textContent = currency(subtotal);
+      totalEl.textContent = currency(subtotal);
       updateWaLink();
       updateCartBadge();
     }
 
-    function makeWaText(){
-      const name=custName.value||"";
-      const phone=custPhone.value||"";
-      const lines=["Bistro Yahya — New Order"];
-      Object.values(cart).forEach(v=>lines.push(`• ${v.name} × ${v.qty}`));
-      const total=Object.values(cart).reduce((s,v)=>s+(v.price*v.qty),0);
-      lines.push(`Total: ₹${total}`);
-      lines.push(`Name: ${name}  Phone: ${phone}`);
-      return lines.join("\n");
+    function clearChips(){
+      chipRoot.innerHTML = '';
+      chips = [];
     }
 
-    function updateWaLink(){
-      const text=encodeURIComponent(makeWaText());
-      waCheckout.href=`https://wa.me/${PHONE}?text=${text}`;
-      waCheckout.classList.toggle("disabled",Object.keys(cart).length===0);
-    }
-
-    function updateCartBadge(){
-      const countEl=document.getElementById("chipCartCount");
-      if(!countEl)return;
-      const count=Object.values(cart).reduce((s,v)=>s+(v.qty||0),0);
-      countEl.textContent=count||"";
+    // create Cart chip (shows live count and scrolls to order panel)
+    function createCartChip(){
+      const cartBtn = document.createElement('button');
+      cartBtn.className = 'chip cart';
+      cartBtn.type = 'button';
+      cartBtn.setAttribute('aria-label', 'Open cart');
+      cartBtn.innerHTML = 'Cart <span class="badge" id="chipCartCount">0</span>';
+      cartBtn.onclick = ()=> {
+        const aside = document.querySelector('aside.card.sticky');
+        if(aside){
+          aside.scrollIntoView({behavior:'smooth', block:'center'});
+          const name = document.getElementById('custName');
+          if(name) name.focus();
+        } else {
+          const wa = document.getElementById('waCheckout');
+          if(wa) wa.focus();
+        }
+      };
+      chipRoot.appendChild(cartBtn);
+      chips.push(cartBtn);
     }
 
     function buildChips(){
-      chipRoot.innerHTML="";
-      const cartBtn=document.createElement("button");
-      cartBtn.className="chip cart";
-      cartBtn.innerHTML='Cart <span class="badge" id="chipCartCount">0</span>';
-      cartBtn.onclick=()=>{document.querySelector("aside.card").scrollIntoView({behavior:"smooth"});}
-      chipRoot.appendChild(cartBtn);
+      clearChips();
+      const allBtn = document.createElement('button');
+      allBtn.className = 'chip active';
+      allBtn.dataset.filter = 'all';
+      allBtn.textContent = 'All';
+      allBtn.onclick = ()=>{ setActiveChip(allBtn); activeFilter = 'all'; render(); };
+      chipRoot.appendChild(allBtn);
+      chips.push(allBtn);
+
+      const seen = new Set();
+      (data.sections||[]).forEach(sec => {
+        const title = (sec.title||'').trim();
+        if(!title || seen.has(title)) return;
+        seen.add(title);
+        const btn = document.createElement('button');
+        btn.className = 'chip';
+        btn.dataset.filter = title;
+        btn.textContent = title;
+        btn.onclick = ()=>{ setActiveChip(btn); activeFilter = title; render(); };
+        chipRoot.appendChild(btn);
+        chips.push(btn);
+      });
+
+      // Add cart chip last so it's easily reachable
+      createCartChip();
     }
 
-    clearCartBtn.onclick=()=>{if(confirm("Clear your order?")){cart={};saveCart();render();renderSummary();}};
+    function setActiveChip(selected){
+      chips.forEach(c=> c.classList.remove('active'));
+      if(selected) selected.classList.add('active');
+    }
+
+    function updateCartBadge(){
+      try {
+        const countEl = document.getElementById('chipCartCount');
+        if(!countEl) return;
+        const count = Object.values(cart).reduce((s,v)=> s + (v.qty||0), 0);
+        countEl.textContent = count || '';
+        // optionally make cart chip visually highlighted when non-empty
+        const cartChip = countEl.closest('.chip');
+        if(cartChip){
+          if(count > 0) cartChip.classList.add('active');
+          else cartChip.classList.remove('active');
+        }
+      } catch(e){}
+    }
 
     async function load(){
-      const res=await fetch("data/menu.json");data=await res.json();
-      buildChips();render();renderSummary();
+      // expire old cart (default 7 days) before we fetch/inspect the new menu
+      expireOldCart(7);
+
+      try{
+        // Use force-cache for better repeat performance; change to 'no-cache' if menu updates often
+        const res = await fetch('data/menu.json', {cache:'force-cache'});
+        if(!res.ok) throw new Error('HTTP '+res.status);
+        data = await res.json();
+      }catch(e){
+        // fallback to template if available
+        try{
+          const t = document.getElementById('menu-fallback');
+          if(t) data = JSON.parse(t.innerHTML.trim());
+        }catch(err){
+          data = { sections: [] };
+        }
+      }
+
+      // Versioning: if menu JSON includes a meta.version, handle forced-clear
+      handleMenuVersioning();
+
+      // sanitize saved cart against newly loaded menu (permanent fix)
+      sanitizeCartAgainstMenu();
+
+      buildChips();
+      custName.value = localStorage.getItem('by_name') || '';
+      custPhone.value = localStorage.getItem('by_phone') || '';
+      render();
+      renderSummary();
+      updateWaLink();
+      updateCartBadge();
     }
 
+    // search listener
+    searchInput.addEventListener('input', ()=> render());
+
+    // persist name/phone and update checkout readiness
+    custName.oninput = ()=>{ localStorage.setItem('by_name', custName.value); updateWaLink(); };
+    custPhone.oninput = ()=>{ localStorage.setItem('by_phone', custPhone.value); updateWaLink(); };
+
+    // Clear Cart button (confirm then clear)
+    if (clearCartBtn) {
+      clearCartBtn.addEventListener('click', ()=> {
+        if (!confirm('Clear your current order?')) return;
+        cart = {}; saveCart(); render(); renderSummary();
+      });
+    }
+
+    // mark active nav link for accessibility
+    (function() {
+      const path = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('header a[href]').forEach(a => {
+        const href = a.getAttribute('href');
+        if(!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http')) return;
+        const target = href.split('/').pop();
+        if (target === path || (path === '' && (target === 'index.html' || target === './'))) {
+          a.classList.add('active-link');
+          a.setAttribute('aria-current', 'page');
+        } else {
+          a.classList.remove('active-link');
+          a.removeAttribute('aria-current');
+        }
+      });
+    })();
+
+    // initialize
     load();
   </script>
+
+  <!-- Fallback template (keeps existing fallback if menu.json missing) -->
+  <template id="menu-fallback">
+    {
+      "sections": [
+        {"title":"Pastas & Pizzas","items":[
+          {"name":"Arrabbiata Pasta","desc":"Spicy tomato-garlic sauce","price":260},
+          {"name":"Margherita Pizza","desc":"Tomato, mozzarella, basil","price":320}
+        ]},
+        {"title":"Burgers & Rolls","items":[
+          {"name":"Classic Chicken Burger","desc":"House sauce, lettuce, soft bun","price":220},
+          {"name":"Paneer Tikka Roll","desc":"Spiced paneer, mint chutney","price":190}
+        ]},
+        {"title":"Desserts & Juices","items":[
+          {"name":"Fudge Brownie","desc":"Warm, optional ice-cream","price":160},
+          {"name":"Cinnamon Bun","desc":"Cream cheese glaze","price":150},
+          {"name":"Watermelon Cooler","desc":"Crushed fruit, hint of lime","price":120}
+        ]}
+      ]
+    }
+  </template>
 </body>
 </html>
