@@ -11,15 +11,18 @@
   <meta property="og:description" content="Pastas, pizzas, burgers, sandwiches, rolls, specialty desserts (brownies, donuts, cinnamon buns) and fresh juices. Reserve your private cabin or order online." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://bistroyahya.com/menu" />
-  <meta property="og:image" content="Bistro Yahya (1).png" />
+  <meta property="og:image" content="images/ambience/bistro-yahya-pink-cabin.webp" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Menu | Bistro Yahya" />
   <meta name="twitter:description" content="Browse Bistro Yahya’s full menu — pastas, pizzas, burgers, sandwiches, rolls, specialty desserts and fresh juices." />
-  <meta name="twitter:image" content="Bistro Yahya (1).png" />
+  <meta name="twitter:image" content="images/ambience/bistro-yahya-pink-cabin.webp" />
 
-  <link rel="icon" href="Bistro Yahya.png" />
+  <link rel="icon" href="images/logo/bistro-yahya-logo.png" />
+  <link rel="preload" href="images/ambience/bistro-yahya-pink-cabin.webp" as="image">
+  <link rel="canonical" href="https://bistroyahya.com/menu">
+
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 
   <!-- Restaurant Schema JSON-LD -->
@@ -41,9 +44,10 @@
     "priceRange": "₹₹",
     "acceptsReservations": true,
     "url": "https://bistroyahya.com/menu",
-    "image": "Bistro Yahya (1).png",
-    "openingHours": "Mo-Su 15:00-23:00",
-    "hasMenu": { "@type": "Menu", "url": "https://bistroyahya.com/menu" }
+    "image": "https://bistroyahya.com/images/ambience/bistro-yahya-pink-cabin.webp",
+    "openingHours": ["Mo-Su 15:00-23:00"],
+    "hasMenu": { "@type": "Menu", "url": "https://bistroyahya.com/menu" },
+    "sameAs": ["https://instagram.com/yourhandle", "https://facebook.com/yourpage"]
   }
   </script>
 
@@ -58,15 +62,29 @@
     h2{font-size:clamp(28px,3.2vw,32px)}
     h3{font-size:clamp(20px,2.4vw,24px)}
     a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
     .container{max-width:var(--max);margin:0 auto;padding:0 20px}
 
+    /* Skip link */
+    .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{left:10px;top:10px;width:auto;height:auto;padding:8px 12px;background:#000;color:#fff;border-radius:6px;z-index:9999}
+
     /* Header */
-    header{position:sticky;top:0;background:rgba(255,247,248,.85);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--border);z-index:10;min-height:72px}
+    header{position:sticky;top:0;background:rgba(255,247,248,.95);backdrop-filter:saturate(180%) blur(6px);border-bottom:1px solid var(--border);z-index:50;min-height:72px}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
     .brand{display:flex;gap:12px;align-items:center}
-    .brand img{width:56px;height:56px;border-radius:14px;border:1px solid var(--border)}
+    .brand img{width:56px;height:56px;border-radius:14px;border:1px solid var(--border);object-fit:cover}
     .brand strong{font-weight:800;font-size:clamp(20px,3vw,28px)}
-    .nav a{padding:12px 14px;border-radius:999px}
+    .primary-links{display:flex;gap:10px;align-items:center}
+    .ribbon{display:inline-block;background:#fff;border:1px solid var(--border);padding:6px 12px;border-radius:999px}
+    .cta{background:var(--accent);color:#fff;font-weight:700;padding:10px 14px;border-radius:999px;box-shadow:var(--shadow);border:0}
+
+    /* Mobile hamburger */
+    .nav-toggle{display:none;background:transparent;border:0;padding:8px;border-radius:8px;cursor:pointer;font-size:16px;color:var(--text)}
+    .mobile-menu{display:none;position:fixed;inset:auto 12px 80px 12px;background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.08);padding:12px;z-index:70;flex-direction:column;gap:8px;max-width:420px}
+    .mobile-menu a{display:block;padding:10px 12px;border-radius:10px;font-weight:700;text-decoration:none;color:var(--text)}
+    .mobile-menu a:hover,.mobile-menu a:focus{background:var(--accent-2);outline:none}
+    .mobile-menu[aria-hidden="false"]{display:flex}
 
     main{padding:0 0 28px}
 
@@ -95,7 +113,6 @@
     .total{font-weight:800;font-size:18px}
     .note{font-size:12px;color:var(--muted)}
     .tag{display:inline-block;background:var(--leaf);color:#fff;border-radius:999px;padding:2px 8px;font-size:12px;margin-left:8px}
-    .ribbon{display:inline-block;background:#fff;border:1px solid var(--border);padding:6px 12px;border-radius:999px}
 
     footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);margin-top:32px}
     .foot{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:center}
@@ -103,52 +120,75 @@
     .actionbar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--border);display:none;z-index:60}
     .actionbar .row{display:grid;grid-template-columns:repeat(3,1fr)}
     .actionbar a{display:flex;align-items:center;justify-content:center;gap:8px;height:60px;font-weight:700}
-    .cta{background:var(--accent);color:#fff;font-weight:700;padding:10px 14px;border-radius:999px;box-shadow:var(--shadow)}
-    .cta.disabled{opacity:.55;pointer-events:none;filter:grayscale(20%)}
+
+    /* Active link style */
+    header a.active-link{background:linear-gradient(90deg,var(--accent) 0%,var(--accent-2) 100%);color:#fff;box-shadow:var(--shadow)}
 
     @media (max-width:980px){
       .grid{grid-template-columns:1fr}
       .actionbar{display:block}
     }
+    @media (max-width:560px){
+      .primary-links{display:none}
+      .nav-toggle{display:inline-flex;align-items:center;gap:8px}
+    }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header>
-    <div class="container nav">
-      <a class="brand" href="./" aria-label="Bistro Yahya Home"><img src="Bistro Yahya.png" alt="Bistro Yahya"/><strong>Bistro Yahya</strong></a>
-      <div style="display:flex;gap:10px;align-items:center">
+    <div class="container nav" role="navigation" aria-label="Main navigation">
+      <a class="brand" href="./" aria-label="Bistro Yahya Home">
+        <img src="images/logo/bistro-yahya-logo.png" alt="Bistro Yahya logo" />
+        <strong>Bistro Yahya</strong>
+      </a>
+
+      <!-- Desktop links -->
+      <nav class="primary-links" aria-label="Primary links">
         <a class="ribbon" href="./">← Home</a>
-        <a class="cta" href="https://wa.me/918877004434?text=Hi%20Bistro%20Yahya!%20I%27d%20like%20to%20reserve%20a%20cabin." target="_blank" rel="noopener" aria-label="Reserve a Cabin">Reserve a Cabin</a>
+        <a class="cta" href="https://wa.me/918877004434?text=Hi%20Bistro%20Yahya!%20I%27d%20like%20to%20reserve%20a%20cabin." target="_blank" rel="noopener noreferrer" aria-label="Reserve a Cabin">Reserve a Cabin</a>
+      </nav>
+
+      <!-- Mobile toggle -->
+      <button id="nav-toggle" class="nav-toggle" aria-controls="mobile-menu" aria-expanded="false" aria-haspopup="true" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="mobile-menu" role="menu" aria-hidden="true">
+        <a role="menuitem" href="./">Home</a>
+        <a role="menuitem" href="./#chef">About</a>
+        <a role="menuitem" href="menu.html">Menu</a>
+        <a role="menuitem" href="./#visit">Visit</a>
+        <a role="menuitem" href="tel:+918877004434">📞 Call</a>
+        <a role="menuitem" href="https://wa.me/918877004434" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
       </div>
     </div>
   </header>
 
-  <main>
+  <main id="main" aria-labelledby="main-heading">
     <section class="menu-hero">
       <div class="container">
-        <h1>Our Menu</h1>
+        <h1 id="main-heading">Our Menu</h1>
         <p class="sub"><em>“I believe food isn’t just to fill the stomach, but to fill the heart. My goal is to bring global flavors to our beautiful town, one delicious bite at a time.”</em> – Chef Yahya</p>
       </div>
     </section>
 
     <div class="container">
       <div class="controls">
-        <input id="search" class="input" placeholder="Search (pizza, brownie, juice...)" />
-        <button class="chip active" data-filter="all">All</button>
-        <button class="chip" data-filter="Pastas">Pastas</button>
-        <button class="chip" data-filter="Pizzas">Pizzas</button>
-        <button class="chip" data-filter="Burgers">Burgers</button>
-        <button class="chip" data-filter="Sandwiches">Sandwiches</button>
-        <button class="chip" data-filter="Rolls">Rolls</button>
-        <button class="chip" data-filter="Desserts">Desserts</button>
-        <button class="chip" data-filter="Juices">Juices</button>
+        <input id="search" class="input" placeholder="Search (pizza, brownie, juice...)" aria-label="Search the menu" />
+        <div id="chip-root" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
       </div>
 
       <div class="grid">
         <div id="menu-root"></div>
-        <aside class="card sticky">
+
+        <aside class="card sticky" aria-labelledby="order-heading">
           <div class="summary">
-            <h3>Your Order</h3>
+            <h3 id="order-heading">Your Order</h3>
 
             <div class="sec">
               <label class="muted" for="custName">Your Name</label>
@@ -160,10 +200,13 @@
               <input id="custPhone" class="input" placeholder="+91 9XXXXXXXXX" inputmode="tel" />
             </div>
 
-            <div id="order-lines" class="sec"></div>
+            <div id="order-lines" class="sec" aria-live="polite"></div>
+
             <div class="line"><span class="muted">Subtotal</span><span id="subtotal">₹0</span></div>
             <div class="line total"><span>Total</span><span id="total">₹0</span></div>
-            <a id="waCheckout" class="cta disabled" target="_blank" rel="noopener">Checkout on WhatsApp</a>
+
+            <a id="waCheckout" class="cta disabled" target="_blank" rel="noopener noreferrer" aria-disabled="true">Checkout on WhatsApp</a>
+
             <div class="note">Payment at café on delivery to cabin / counter. Prices inclusive of taxes (where applicable).</div>
           </div>
         </aside>
@@ -175,7 +218,7 @@
     <div class="container foot">
       <div>© <span id="year"></span> Bistro Yahya. All rights reserved.</div>
       <nav class="links" aria-label="Quick Links"><a href="./#chef">About</a> | <a href="menu.html">Menu</a> | <a href="./#visit">Contact</a></nav>
-      <div aria-label="Social" class="links"><a href="https://instagram.com/yourhandle" target="_blank" rel="noopener">Instagram</a> | <a href="https://facebook.com/yourpage" target="_blank" rel="noopener">Facebook</a> | <a href="https://wa.me/918877004434" target="_blank" rel="noopener">WhatsApp</a></div>
+      <div aria-label="Social" class="links"><a href="https://instagram.com/yourhandle" target="_blank" rel="noopener noreferrer">Instagram</a> | <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer">Facebook</a> | <a href="https://wa.me/918877004434" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
     </div>
   </footer>
 
@@ -184,11 +227,71 @@
     <div class="row">
       <a href="menu.html" aria-label="Order Now">📜 Order Now</a>
       <a href="tel:+918877004434" aria-label="Call Bistro Yahya">📞 Call</a>
-      <a href="https://wa.me/918877004434?text=Hi%20Bistro%20Yahya!%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener" aria-label="WhatsApp Bistro Yahya">💬 WhatsApp</a>
+      <a href="https://wa.me/918877004434?text=Hi%20Bistro%20Yahya!%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Bistro Yahya">💬 WhatsApp</a>
     </div>
   </div>
 
   <script>
+    // Basic page setup
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // NAV: accessible hamburger with focus trap and Escape; restores focus
+    (function(){
+      const btn = document.getElementById('nav-toggle');
+      const menu = document.getElementById('mobile-menu');
+      if(!btn || !menu) return;
+      const FOCUSABLE = 'a, button, input, [tabindex]:not([tabindex="-1"])';
+      btn._prevFocus = null;
+
+      function openMenu(){
+        btn.setAttribute('aria-expanded','true');
+        btn.setAttribute('aria-label','Close menu');
+        menu.setAttribute('aria-hidden','false');
+        btn._prevFocus = document.activeElement;
+        const first = menu.querySelector(FOCUSABLE);
+        if(first) first.focus();
+        document.addEventListener('keydown', handleKeydown);
+        document.addEventListener('click', handleOutsideClick);
+      }
+
+      function closeMenu(){
+        btn.setAttribute('aria-expanded','false');
+        btn.setAttribute('aria-label','Open menu');
+        menu.setAttribute('aria-hidden','true');
+        if(btn._prevFocus) try{ btn._prevFocus.focus(); }catch(e){}
+        document.removeEventListener('keydown', handleKeydown);
+        document.removeEventListener('click', handleOutsideClick);
+      }
+
+      function handleKeydown(e){
+        if(e.key === 'Escape'){ closeMenu(); return; }
+        if(e.key === 'Tab'){
+          const focusables = Array.from(menu.querySelectorAll(FOCUSABLE)).filter(el => !el.hasAttribute('disabled'));
+          if(focusables.length === 0) return;
+          const first = focusables[0];
+          const last = focusables[focusables.length -1];
+          if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+          else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+        }
+      }
+
+      function handleOutsideClick(e){
+        if(menu.contains(e.target) || btn.contains(e.target)) return;
+        if(menu.getAttribute('aria-hidden') === 'false') closeMenu();
+      }
+
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        if(expanded) closeMenu(); else openMenu();
+      });
+
+      // ensure menu closed when resizing to desktop
+      window.addEventListener('resize', () => {
+        if(window.innerWidth > 560 && menu.getAttribute('aria-hidden') === 'false') closeMenu();
+      });
+    })();
+
+    // MENU + CART
     const PHONE = '918877004434';
     const root = document.getElementById('menu-root');
     const orderLines = document.getElementById('order-lines');
@@ -196,23 +299,19 @@
     const totalEl = document.getElementById('total');
     const waCheckout = document.getElementById('waCheckout');
     const searchInput = document.getElementById('search');
-    const chips = Array.from(document.querySelectorAll('.chip'));
+    const chipRoot = document.getElementById('chip-root');
     const custName = document.getElementById('custName');
     const custPhone = document.getElementById('custPhone');
-    document.getElementById('year').textContent = new Date().getFullYear();
 
     let data = { sections: [] };
     let cart = JSON.parse(localStorage.getItem('by_cart')||'{}');
     let activeFilter = 'all';
+    let chips = []; // chip buttons
 
     function saveCart(){ localStorage.setItem('by_cart', JSON.stringify(cart)); }
     function currency(n){ const num = Number(n); return '₹' + (Number.isFinite(num)? num : 0); }
 
-    function sectionMatches(title){
-      if(activeFilter==='all') return true;
-      const key = activeFilter.toLowerCase();
-      return (title||'').toLowerCase().includes(key);
-    }
+    function sectionMatches(title){ if(activeFilter==='all') return true; const key = (activeFilter||'').toLowerCase(); return (title||'').toLowerCase().includes(key); }
 
     function itemMatches(item){
       const q = searchInput.value.trim().toLowerCase();
@@ -244,23 +343,36 @@
             </div>
             <div class="price">${currency(item.price ?? 0)}</div>
             <div class="qty">
-              <button class="btn" data-act="dec">−</button>
-              <span>${qty}</span>
-              <button class="btn" data-act="inc">+</button>
+              <button class="btn" data-act="dec" aria-label="Decrease quantity">−</button>
+              <span aria-live="polite">${qty}</span>
+              <button class="btn" data-act="inc" aria-label="Increase quantity">+</button>
             </div>`;
-          line.querySelector('[data-act="dec"]').onclick = ()=>{
-            if(qty>0){
-              cart[key].qty--;
-              if(cart[key].qty<=0) delete cart[key];
+          // attach aria-labels with item name for screen readers
+          const decBtn = line.querySelector('[data-act="dec"]');
+          const incBtn = line.querySelector('[data-act="inc"]');
+          if(decBtn) decBtn.setAttribute('aria-label', `Decrease quantity for ${item.name}`);
+          if(incBtn) incBtn.setAttribute('aria-label', `Increase quantity for ${item.name}`);
+
+          // handlers
+          if(decBtn){
+            decBtn.onclick = ()=>{
+              const currentQty = cart[key]?.qty || 0;
+              if(currentQty>0){
+                cart[key].qty = currentQty - 1;
+                if(cart[key].qty<=0) delete cart[key];
+                saveCart(); render(); renderSummary();
+              }
+            };
+          }
+          if(incBtn){
+            incBtn.onclick = ()=>{
+              const priceNum = Number(item.price) || 0;
+              cart[key] = cart[key]||{name:item.name, price:priceNum};
+              cart[key].qty = (cart[key].qty||0)+1;
               saveCart(); render(); renderSummary();
-            }
-          };
-          line.querySelector('[data-act="inc"]').onclick = ()=>{
-            const priceNum = Number(item.price) || 0;
-            cart[key] = cart[key]||{name:item.name, price:priceNum};
-            cart[key].qty = (cart[key].qty||0)+1;
-            saveCart(); render(); renderSummary();
-          };
+            };
+          }
+
           card.appendChild(line);
         });
         root.appendChild(card);
@@ -276,7 +388,7 @@
       lines.push(`Total: ₹${total}`);
       lines.push('Cabin/Table (optional): ____');
       lines.push(`Name: ${name || '____'}  Phone: ${phone || '_____'}`);
-      return lines.join('\n'); // real newlines; encode once later
+      return lines.join('\n'); // encode when building href
     }
 
     function updateWaLink(){
@@ -287,7 +399,13 @@
         Object.keys(cart).length>0 &&
         (custName.value||'').trim().length>0 &&
         (custPhone.value||'').trim().replace(/\D/g,'').length>=10;
-      if(ready){ waCheckout.classList.remove('disabled'); } else { waCheckout.classList.add('disabled'); }
+      if(ready){
+        waCheckout.classList.remove('disabled');
+        waCheckout.removeAttribute('aria-disabled');
+      } else {
+        waCheckout.classList.add('disabled');
+        waCheckout.setAttribute('aria-disabled','true');
+      }
     }
 
     function renderSummary(){
@@ -306,12 +424,58 @@
       updateWaLink();
     }
 
+    function clearChips(){
+      chipRoot.innerHTML = '';
+      chips = [];
+    }
+
+    function buildChips(){
+      clearChips();
+      const allBtn = document.createElement('button');
+      allBtn.className = 'chip active';
+      allBtn.dataset.filter = 'all';
+      allBtn.textContent = 'All';
+      allBtn.onclick = ()=>{ setActiveChip(allBtn); activeFilter = 'all'; render(); };
+      chipRoot.appendChild(allBtn);
+      chips.push(allBtn);
+
+      const seen = new Set();
+      (data.sections||[]).forEach(sec => {
+        const title = (sec.title||'').trim();
+        if(!title || seen.has(title)) return;
+        seen.add(title);
+        const btn = document.createElement('button');
+        btn.className = 'chip';
+        btn.dataset.filter = title;
+        btn.textContent = title;
+        btn.onclick = ()=>{ setActiveChip(btn); activeFilter = title; render(); };
+        chipRoot.appendChild(btn);
+        chips.push(btn);
+      });
+    }
+
+    function setActiveChip(selected){
+      chips.forEach(c=> c.classList.remove('active'));
+      if(selected) selected.classList.add('active');
+    }
+
     async function load(){
       try{
-        const res = await fetch('data/menu.json', {cache:'no-store'});
+        // Use force-cache for better repeat performance; change to 'no-cache' if menu updates often
+        const res = await fetch('data/menu.json', {cache:'force-cache'});
+        if(!res.ok) throw new Error('HTTP '+res.status);
         data = await res.json();
-      }catch(e){ data = { sections: [] }; }
-      // preload saved name/phone
+      }catch(e){
+        // fallback to template if available
+        try{
+          const t = document.getElementById('menu-fallback');
+          if(t) data = JSON.parse(t.innerHTML.trim());
+        }catch(err){
+          data = { sections: [] };
+        }
+      }
+
+      buildChips();
       custName.value = localStorage.getItem('by_name') || '';
       custPhone.value = localStorage.getItem('by_phone') || '';
       render();
@@ -319,22 +483,53 @@
       updateWaLink();
     }
 
-    // listeners
-    chips.forEach(c=> c.onclick = ()=>{ chips.forEach(x=>x.classList.remove('active')); c.classList.add('active'); activeFilter = c.dataset.filter; render(); });
-    searchInput.oninput = ()=> render();
+    // search listener
+    searchInput.addEventListener('input', ()=> render());
+
+    // persist name/phone and update checkout readiness
     custName.oninput = ()=>{ localStorage.setItem('by_name', custName.value); updateWaLink(); };
     custPhone.oninput = ()=>{ localStorage.setItem('by_phone', custPhone.value); updateWaLink(); };
 
+    // mark active nav link for accessibility
+    (function() {
+      const path = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('header a[href]').forEach(a => {
+        const href = a.getAttribute('href');
+        if(!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http')) return;
+        const target = href.split('/').pop();
+        if (target === path || (path === '' && (target === 'index.html' || target === './'))) {
+          a.classList.add('active-link');
+          a.setAttribute('aria-current', 'page');
+        } else {
+          a.classList.remove('active-link');
+          a.removeAttribute('aria-current');
+        }
+      });
+    })();
+
+    // initialize
     load();
   </script>
 
-  <!-- Sticky mobile action bar -->
-  <div class="actionbar" aria-hidden="true">
-    <div class="row">
-      <a href="menu.html" aria-label="Order Now">📜 Order Now</a>
-      <a href="tel:+918877004434" aria-label="Call Bistro Yahya">📞 Call</a>
-      <a href="https://wa.me/918877004434?text=Hi%20Bistro%20Yahya!%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener" aria-label="WhatsApp Bistro Yahya">💬 WhatsApp</a>
-    </div>
-  </div>
+  <!-- Fallback template (keeps existing fallback if menu.json missing) -->
+  <template id="menu-fallback">
+    {
+      "sections": [
+        {"title":"Pastas & Pizzas","items":[
+          {"name":"Arrabbiata Pasta","desc":"Spicy tomato-garlic sauce","price":260},
+          {"name":"Margherita Pizza","desc":"Tomato, mozzarella, basil","price":320}
+        ]},
+        {"title":"Burgers & Rolls","items":[
+          {"name":"Classic Chicken Burger","desc":"House sauce, lettuce, soft bun","price":220},
+          {"name":"Paneer Tikka Roll","desc":"Spiced paneer, mint chutney","price":190}
+        ]},
+        {"title":"Desserts & Juices","items":[
+          {"name":"Fudge Brownie","desc":"Warm, optional ice-cream","price":160},
+          {"name":"Cinnamon Bun","desc":"Cream cheese glaze","price":150},
+          {"name":"Watermelon Cooler","desc":"Crushed fruit, hint of lime","price":120}
+        ]}
+      ]
+    }
+  </template>
 </body>
 </html>
