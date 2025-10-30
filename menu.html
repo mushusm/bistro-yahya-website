@@ -205,7 +205,10 @@
             <div class="line"><span class="muted">Subtotal</span><span id="subtotal">₹0</span></div>
             <div class="line total"><span>Total</span><span id="total">₹0</span></div>
 
-            <a id="waCheckout" class="cta disabled" target="_blank" rel="noopener noreferrer" aria-disabled="true">Checkout on WhatsApp</a>
+            <div style="display:flex;gap:8px;margin-top:10px">
+              <a id="waCheckout" class="cta disabled" target="_blank" rel="noopener noreferrer" aria-disabled="true">Checkout on WhatsApp</a>
+              <button id="clearCart" class="btn" type="button" aria-label="Clear cart">Clear Cart</button>
+            </div>
 
             <div class="note">Payment at café on delivery to cabin / counter. Prices inclusive of taxes (where applicable).</div>
           </div>
@@ -302,14 +305,32 @@
     const chipRoot = document.getElementById('chip-root');
     const custName = document.getElementById('custName');
     const custPhone = document.getElementById('custPhone');
+    const clearCartBtn = document.getElementById('clearCart');
 
     let data = { sections: [] };
     let cart = JSON.parse(localStorage.getItem('by_cart')||'{}');
     let activeFilter = 'all';
     let chips = []; // chip buttons
 
-    function saveCart(){ localStorage.setItem('by_cart', JSON.stringify(cart)); }
+    // saveCart now records timestamp for expiry logic
+    function saveCart(){ 
+      localStorage.setItem('by_cart', JSON.stringify(cart)); 
+      try { localStorage.setItem('by_cart_ts', Date.now().toString()); } catch(e) {}
+    }
     function currency(n){ const num = Number(n); return '₹' + (Number.isFinite(num)? num : 0); }
+
+    // expireOldCart: clear cart if older than given days (default 7)
+    function expireOldCart(days = 7){
+      try {
+        const ts = Number(localStorage.getItem('by_cart_ts') || '0');
+        if(!ts) return;
+        const ageMs = Date.now() - ts;
+        if(ageMs > days * 24 * 60 * 60 * 1000){
+          cart = {};
+          saveCart();
+        }
+      } catch (e) { /* ignore localStorage errors */ }
+    }
 
     function sectionMatches(title){ if(activeFilter==='all') return true; const key = (activeFilter||'').toLowerCase(); return (title||'').toLowerCase().includes(key); }
 
@@ -347,6 +368,7 @@
               <span aria-live="polite">${qty}</span>
               <button class="btn" data-act="inc" aria-label="Increase quantity">+</button>
             </div>`;
+
           // attach aria-labels with item name for screen readers
           const decBtn = line.querySelector('[data-act="dec"]');
           const incBtn = line.querySelector('[data-act="inc"]');
@@ -377,6 +399,41 @@
         });
         root.appendChild(card);
       });
+    }
+
+    // sanitizeCartAgainstMenu: remove saved cart items that aren't in current menu data
+    function sanitizeCartAgainstMenu() {
+      const valid = new Set();
+      (data.sections || []).forEach(sec => {
+        (sec.items || []).forEach(it => {
+          valid.add(`${sec.title}|${it.name}`);
+        });
+      });
+
+      if (!cart || typeof cart !== 'object') { cart = {}; saveCart(); return; }
+
+      let changed = false;
+      Object.keys(cart).forEach(k => {
+        if (!valid.has(k)) { delete cart[k]; changed = true; }
+      });
+
+      if (changed) {
+        saveCart();
+      }
+    }
+
+    // handleMenuVersioning: if data.meta.version exists and differs from stored version, clear cart
+    function handleMenuVersioning(){
+      try {
+        const v = data?.meta?.version;
+        if (v === undefined) return;
+        const saved = Number(localStorage.getItem('by_menu_version') || '0');
+        if (saved !== v){
+          cart = {};
+          saveCart();
+          localStorage.setItem('by_menu_version', String(v));
+        }
+      } catch(e) { /* ignore localStorage errors */ }
     }
 
     function makeWaText(){
@@ -460,6 +517,9 @@
     }
 
     async function load(){
+      // expire old cart (default 7 days) before we fetch/inspect the new menu
+      expireOldCart(7);
+
       try{
         // Use force-cache for better repeat performance; change to 'no-cache' if menu updates often
         const res = await fetch('data/menu.json', {cache:'force-cache'});
@@ -475,6 +535,12 @@
         }
       }
 
+      // Versioning: if menu JSON includes a meta.version, handle forced-clear
+      handleMenuVersioning();
+
+      // sanitize saved cart against newly loaded menu (permanent fix)
+      sanitizeCartAgainstMenu();
+
       buildChips();
       custName.value = localStorage.getItem('by_name') || '';
       custPhone.value = localStorage.getItem('by_phone') || '';
@@ -489,6 +555,14 @@
     // persist name/phone and update checkout readiness
     custName.oninput = ()=>{ localStorage.setItem('by_name', custName.value); updateWaLink(); };
     custPhone.oninput = ()=>{ localStorage.setItem('by_phone', custPhone.value); updateWaLink(); };
+
+    // Clear Cart button (confirm then clear)
+    if (clearCartBtn) {
+      clearCartBtn.addEventListener('click', ()=> {
+        if (!confirm('Clear your current order?')) return;
+        cart = {}; saveCart(); render(); renderSummary();
+      });
+    }
 
     // mark active nav link for accessibility
     (function() {
