@@ -1,65 +1,68 @@
 {
+  "meta": {
+    "version": 2
+  },
   "sections": [
     {
       "title": "Starters",
       "items": [
-        { "name": "Chicken Strips", "desc": "Crispy golden chicken strips served with dip", "price": 140 },
-        { "name": "Chicken Popcorn", "desc": "Bite-sized crunchy chicken popcorn", "price": 160 },
-        { "name": "Chicken Tenders", "desc": "Juicy tender fillets coated with crumbs", "price": 180 }
+        { "name": "Chicken Strips", "price": 140 },
+        { "name": "Chicken Popcorn", "price": 160 },
+        { "name": "Chicken Tenders", "price": 180 }
       ]
     },
     {
       "title": "Club Sandwiches",
       "items": [
-        { "name": "Chicken Tikka Club Sandwich", "desc": "Triple-layered sandwich with chicken tikka and mayo", "price": 120 },
-        { "name": "Paneer Club Sandwich", "desc": "Soft paneer cubes in tikka masala layered with cheese", "price": 80 }
+        { "name": "Chicken Tikka Club Sandwich", "price": 120 },
+        { "name": "Paneer Club Sandwich", "price": 80 }
       ]
     },
     {
       "title": "All About Fries",
       "items": [
-        { "name": "Plain Fries", "desc": "Classic golden fries", "price": 70 },
-        { "name": "Cayenne Pepper Fries", "desc": "Spicy cayenne-seasoned fries", "price": 80 },
-        { "name": "Chicken Funky Chips (Loaded)", "desc": "Loaded fries with spicy chicken & sauce", "price": 200 }
+        { "name": "Plain Fries", "price": 70 },
+        { "name": "Cayenne Pepper Fries", "price": 80 },
+        { "name": "Chicken Funky Chips (Loaded)", "price": 200 }
       ]
     },
     {
       "title": "Burgers",
       "items": [
-        { "name": "Chicken Broasted Burger", "desc": "Crispy broasted chicken in a soft bun", "price": 80 },
-        { "name": "Chicken Tikka Burger", "desc": "Juicy chicken tikka patty with house sauce", "price": 80 },
-        { "name": "Butter Chicken Broasted Burger", "desc": "Broasted chicken topped with butter chicken sauce", "price": 100 },
-        { "name": "Chicken Strips Burger", "desc": "Loaded with crispy chicken strips", "price": 100 },
-        { "name": "Veg Patty Burger", "desc": "Crispy vegetable patty with cheese and lettuce", "price": 80 }
+        { "name": "Chicken Broasted Burger", "price": 80 },
+        { "name": "Chicken Tikka Burger", "price": 80 },
+        { "name": "Butter Chicken Broasted Burger", "price": 100 },
+        { "name": "Chicken Strips Burger", "price": 100 },
+        { "name": "Veg Patty Burger", "price": 80 }
       ]
     },
     {
       "title": "Wraps",
       "items": [
-        { "name": "Zinger Wrap", "desc": "Zesty and crispy chicken wrap with sauce", "price": 120 },
-        { "name": "Chicken Strips Wrap", "desc": "Loaded with tender chicken strips and cheese", "price": 100 }
+        { "name": "Zinger Wrap", "price": 120 },
+        { "name": "Chicken Strips Wrap", "price": 100 }
       ]
     },
     {
       "title": "Pizza",
       "items": [
-        { "name": "Margherita Pizza (9\")", "desc": "Classic cheese pizza", "price": 150 },
-        { "name": "Margherita Pizza (12\")", "desc": "Larger size with extra cheese", "price": 280 },
-        { "name": "Farmhouse Pizza (9\")", "desc": "Loaded with veggies and cheese", "price": 180 },
-        { "name": "Farmhouse Pizza (12\")", "desc": "Loaded with veggies and cheese", "price": 300 },
-        { "name": "BY Special Butter Chicken Pizza (9\")", "desc": "Signature butter chicken sauce base", "price": 220 },
-        { "name": "BY Special Butter Chicken Pizza (12\")", "desc": "Signature butter chicken sauce base", "price": 400 },
-        { "name": "Broasted Chicken Pizza (9\")", "desc": "Crispy broasted chicken chunks on pizza", "price": 220 },
-        { "name": "Broasted Chicken Pizza (12\")", "desc": "Crispy broasted chicken chunks on pizza", "price": 400 },
-        { "name": "All in All Chicken Pizza (9\")", "desc": "Loaded with every chicken topping we have", "price": 250 },
-        { "name": "All in All Chicken Pizza (12\")", "desc": "Loaded with every chicken topping we have", "price": 450 }
+        { "name": "Margherita Pizza 9\"", "price": 150 },
+        { "name": "Margherita Pizza 12\"", "price": 280 },
+        { "name": "Farmhouse Pizza 9\"", "price": 180 },
+        { "name": "Farmhouse Pizza 12\"", "price": 300 },
+        { "name": "BY Special Butter Chicken Pizza 9\"", "price": 220 },
+        { "name": "BY Special Butter Chicken Pizza 12\"", "price": 400 },
+        { "name": "Broasted Chicken Pizza 9\"", "price": 220 },
+        { "name": "Broasted Chicken Pizza 12\"", "price": 400 },
+        { "name": "All in All Chicken Pizza 9\"", "price": 250 },
+        { "name": "All in All Chicken Pizza 12\"", "price": 450 }
       ]
     },
     {
       "title": "Pasta",
       "items": [
-        { "name": "Angry Bird Pasta", "desc": "Spicy red sauce pasta with chicken", "price": 200 },
-        { "name": "Alfredo Pasta", "desc": "Creamy white sauce pasta with herbs", "price": 200 }
+        { "name": "Angry Bird Pasta", "price": 200 },
+        { "name": "Alfredo Pasta", "price": 200 }
       ]
     }
   ]
